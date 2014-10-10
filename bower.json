@@ -5,7 +5,7 @@
   "authors": [
     "Pedr Browne <pedr.browne@gmail.com>"
   ],
-  "description": "Compass's vertical-rhythm module extracted and with everything other than tex-related properties removed",
+  "description": "Compass's vertical-rhythm module extracted and with everything other than text-related properties removed",
   "main": "sass/_rhythm.scss",
   "keywords": [
     "sass",

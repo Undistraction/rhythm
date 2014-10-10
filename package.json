@@ -1,7 +1,7 @@
 {
   "name": "Box",
   "version": "0.0.7",
-  "description": "Compass's vertical-rhythm module extracted and with everything other than tex-related properties removed",
+  "description": "Compass's vertical-rhythm module extracted and with everything other than text-related properties removed",
   "main": "Gruntfile.js",
   "directories": {
     "doc": "docs"
