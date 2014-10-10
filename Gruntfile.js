@@ -26,8 +26,8 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          '<%= dir.src %>/box/_support.scss',
-          '<%= dir.src %>/_box.scss'
+          '<%= dir.src %>/rhythm/_support.scss',
+          '<%= dir.src %>/_rhythm.scss'
         ],
         dest: '<%= dir.dist %>/_<%= pkg.name.toLowerCase() %>.scss',
       },
