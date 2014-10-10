@@ -1,0 +1,23 @@
+{
+  "name": "rhythm",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Undistraction/rhythm",
+  "authors": [
+    "Pedr Browne <pedr.browne@gmail.com>"
+  ],
+  "description": "Compass's vertical-rhythm module extracted and with everything other than tex-related properties removed",
+  "main": "sass/_rhythm.scss",
+  "keywords": [
+    "sass",
+    "vertical-rhythm",
+    "typography"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

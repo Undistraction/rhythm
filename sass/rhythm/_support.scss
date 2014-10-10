@@ -1,0 +1,88 @@
+
+// Default font-size for all browsers
+$rhythm-browser-default-font-size: 16px;
+
+// The leader is the amount of whitespace in a line.
+// It might be useful in your calculations.
+$rhythm-base-leading: convert-length($rhythm-base-line-height - $rhythm-base-font-size, $rhythm-unit, $rhythm-base-font-size);
+
+// The half-leader is the amount of whitespace above and below a line.
+// It might be useful in your calculations.
+$rhythm-base-half-leader: $rhythm-base-leading / 2;
+
+// @private Whether the rhythm output is in absolute units (px) or not (em, rem)
+$rhythm-relative-font-sizing: if($rhythm-unit == px, false, true);
+
+$rhythm-invalid-value-error: "Invalid Value Error";
+$rhythm-invalid-unit-error: "Invalid Unit Error";
+$rhythm-last-error: null;
+$rhythm-under-test: false;
+$rhythm-error-thrown: false;
+
+@function rhythm-throw-error($error, $message) {
+  @if $rhythm-under-test {
+    @if not $rhythm-error-thrown {
+      $rhythm-error-thrown: true !global;
+      $rhythm-last-error: $error !global;
+    }
+  } @else {
+    @error "#{$error} #{$message}";
+  }
+  @return null;
+}
+
+@function rhythm-validate-config() {
+  // Validate units
+  @if unit($rhythm-base-font-size)   != 'px' {
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-base-font-size must resolve to a pixel unit.");
+  }
+  @if unit($rhythm-base-line-height) != 'px' {
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-base-line-height must resolve to a pixel unit.");
+  }
+  @if $rhythm-unit != 'px' and $rhythm-unit != 'em' and $rhythm-unit != 'rem' {
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-unit must be `px`, `em` or `rem`.");
+  }
+  @return null;
+}
+
+// Calculate rhythm units.
+@function rhythm($lines: 1, $font-size: $rhythm-base-font-size, $offset: 0) {
+
+  @if type-of($lines) != number {
+    $lines: rhythm-parse-value-filter($lines);
+  }
+  $rhythm: convert-length($lines * $rhythm-base-line-height - $offset, $rhythm-unit, $font-size);
+  @if unit($rhythm) == px {
+    $rhythm: floor($rhythm);
+  }
+  @return $rhythm;
+}
+
+// Calculate the minimum multiple of rhythm units needed to contain the font-size.
+@function rhythm-lines-for-font-size($font-size) {
+  $lines: if($rhythm-round-to-nearest-half-line,
+             ceil(2 * $font-size / $rhythm-base-line-height) / 2,
+             ceil($font-size / $rhythm-base-line-height));
+  // If lines are cramped include some extra lead.
+
+  @if ($lines * $rhythm-base-line-height - $font-size) < ($rhythm-min-line-leading * 2) {
+    $lines: $lines + if($rhythm-round-to-nearest-half-line, 0.5, 1);
+  }
+  @return $lines;
+}
+
+// @private Outputs rhythm values. For rem units, outputs pixel fallbacks
+// by default.
+@mixin render-rhythm($property, $values) {
+  $output: ();
+  @each $value in $values {
+    @if unit($value) == px {
+      // Ensure all pixel values are rounded to the nearest pixel.
+      $output: join($output, round($value));
+    }
+    @else {
+      $output: join($output, $value);
+    }
+  }
+  #{$property}: $output;
+}
