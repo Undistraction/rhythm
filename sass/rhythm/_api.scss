@@ -46,7 +46,7 @@
   @if $lines == auto {
     $lines: rhythm-lines-for-font-size($font-size);
   }
-  @include rhythm-render-property(font-size, convert-length($font-size, $rhythm-render-unit, $from-context));
+  @include rhythm-render-property(font-size, rhythm-convert-value($font-size, $rhythm-render-unit, $from-context));
   @include rhythm-render-leading($lines, $font-size);
 }
 

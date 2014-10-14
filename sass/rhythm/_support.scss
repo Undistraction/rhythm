@@ -53,7 +53,7 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
 ///  The raw distance value
 ///
 @function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) {
-  $rhythm: convert-length($lines * $rhythm-base-line-height, $rhythm-render-unit, $font-size);
+  $rhythm: rhythm-convert-value($lines * $rhythm-base-line-height, $rhythm-render-unit, $font-size);
   // Round pixel values
   @if unit($rhythm) == px {
     $rhythm: floor($rhythm);
