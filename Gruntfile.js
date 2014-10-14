@@ -1,15 +1,11 @@
 module.exports = function(grunt) {
 
-  // Modules
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-open');
-  grunt.loadNpmTasks('grunt-bump');
+  // Load all available grunt tasks
+  require('load-grunt-tasks')(grunt,'bootcamp');
+  // Bootcamp doesn't use a `grunt-` prefix so load it manually
   grunt.loadNpmTasks('bootcamp');
-  grunt.loadNpmTasks('grunt-sassdoc');
 
-  // Grunt Tasks
+  // Configure tasks
   grunt.initConfig({
 
     dir : {
@@ -18,18 +14,21 @@ module.exports = function(grunt) {
     },
 
     pkg: grunt.file.readJSON('package.json'),
+    projectName: '<%= pkg.name.toLowerCase() %>',
 
     // Concat
     concat: {
       options: {
-        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+        separator: '\n\n',
+        banner: '/*! <%= projectName %> v<%= pkg.version %> – <%= grunt.template.today("dd.mm.yyyy") %> */\n\n',
       },
       dist: {
         src: [
-          '<%= dir.src %>/rhythm/_support.scss',
-          '<%= dir.src %>/_rhythm.scss'
+          '<%= dir.src %>/<%= projectName %>/_config.scss',
+          '<%= dir.src %>/<%= projectName %>/_support.scss',
+          '<%= dir.src %>/<%= projectName %>/_api.scss'
         ],
-        dest: '<%= dir.dist %>/_<%= pkg.name.toLowerCase() %>.scss',
+        dest: '<%= dir.dist %>/_<%= projectName %>.scss',
       },
     },
 
@@ -86,6 +85,24 @@ module.exports = function(grunt) {
       }
     },
 
+    // Shell
+    shell: {
+        options: {
+            stderr: false
+        },
+        // Copy docs folder to gh-branch and push it
+        ghpages: {
+            command: [
+              "git checkout gh-pages",
+              "git checkout master ./docs",
+              "git add -A",
+              "git c -m 'docs: Update Docs to v<%= pkg.version %>'",
+              "git push origin gh-pages",
+              "git checkout master"
+            ].join('&&')
+        }
+    },
+
     // Versioning
     bump: {
       options: {
@@ -93,7 +110,7 @@ module.exports = function(grunt) {
         updateConfigs: ['pkg'],
         commit: true,
         commitMessage: 'version: Bump to %VERSION%',
-        commitFiles: ['package.json', 'bower.json', 'docs/*'],
+        commitFiles: ['package.json', 'bower.json', 'docs/*', 'dist/*'],
         createTag: true,
         tagName: '%VERSION%',
         tagMessage: 'Version %VERSION%',
@@ -103,14 +120,14 @@ module.exports = function(grunt) {
         globalReplace: false
       }
     }
-
   });
 
-  // Tasks
+  // Define own tasks
   grunt.registerTask('test', ['sass', 'bootcamp']);
   grunt.registerTask('dev', ['test', 'watch']);
   grunt.registerTask('build', ['test', 'sassdoc', 'concat']);
   grunt.registerTask('docs', ['sassdoc', 'open:docs']);
-  grunt.registerTask('patch', ['bump-only:patch', 'sassdoc', 'bump-commit']);
-  grunt.registerTask('minor', ['bump-only:patch', 'sassdoc', 'bump-commit']);
+  grunt.registerTask('deploy', ['sassdoc', 'build', 'bump-commit', 'shell:ghpages'])
+  grunt.registerTask('patch', ['bump-only:patch', 'deploy']);
+  grunt.registerTask('minor', ['bump-only:minor', 'deploy']);
 };
