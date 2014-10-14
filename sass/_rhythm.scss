@@ -1,65 +1,12 @@
+/**
+ * Rhythm
+ * A set of mixins for dealing with vertical rhythm using font-size and line-height extracted from
+ * Compass's vertical rhythm.
+ *
+ * Github: https://github.com/Undistraction/rhythm
+ * Docs: http://undistraction.github.io/rhythm/docs
+ */
+
+@import "rhythm/config";
 @import "rhythm/support";
-
-// The default font size for all text in pixels
-$rhythm-base-font-size: 16px !default;
-
-// The distance between text baselines (vertical rhythm) in pixels.
-$rhythm-base-line-height: 21px !default;
-
-// The length unit in which to output rhythm values.
-// Supported values: px, em, rem. Percent units can't be used since they
-// make calculating padding and margins impractical, and percentage borders are
-// not valid or supported in css.
-$rhythm-unit: rem !default;
-
-// Allows the `adjust-font-size-to` mixin and the `rhythm-lines-for-font-size` function
-// to round the line height to the nearest half line height instead of the
-// nearest integral line height to avoid large spacing between lines.
-$rhythm-round-to-nearest-half-line: false !default;
-
-// Ensure there is at least this many pixels
-// of leading above and below the text.
-$rhythm-min-line-leading: 2px !default;
-
-// Establishes a font baseline for the given font-size.
-@mixin rhythm-establish($font-size: $rhythm-base-font-size) {
-  $is-valid: rhythm-validate-config();
-  $relative-size: 100% * ($font-size / $rhythm-browser-default-font-size);
-
-  html {
-    font-size: if($rhythm-relative-font-sizing, $relative-size, $font-size);
-
-    // Webkit has a bug that prevents line-height being set in rem on <html>;
-    // To work around this and simplify output, we can set initial line-height
-    // in ems for all relative rhythm units, even when $rhythm-unit is `rem`.
-    @if $rhythm-relative-font-sizing {
-      line-height: convert-length($rhythm-base-line-height, em);
-    }
-    @else {
-      line-height: round($rhythm-base-line-height);
-    }
-  }
-}
-
-// Adjust a block to have a different font size and line height to maintain the
-// rhythm. $lines specifies how many multiples of the baseline rhythm each line
-// of this font should use up. It does not have to be an integer, but it
-// defaults to the smallest integer that is large enough to fit the font.
-// Use $from-size to adjust from a font-size other than the base font-size.
-@mixin font-rhythm($to-size, $lines: auto, $from-size: $rhythm-base-font-size) {
-  $to-size: convert-length($to-size, px, $from-size);
-
-  @if $lines == auto {
-    $lines: rhythm-lines-for-font-size($to-size);
-  }
-  @include render-rhythm(font-size, convert-length($to-size, $rhythm-unit, $from-size));
-  @include rhythm-adjust-leading-to($lines, $to-size);
-}
-
-// Adjust a block to have different line height to maintain the rhythm.
-// $lines specifies how many multiples of the baseline rhythm each line of this
-// font should use up. It does not have to be an integer, but it defaults to the
-// smallest integer that is large enough to fit the font.
-@mixin rhythm-adjust-leading-to($lines, $font-size: $rhythm-base-font-size) {
-  @include render-rhythm(line-height, rhythm($lines, $font-size));
-}
+@import "rhythm/api";
