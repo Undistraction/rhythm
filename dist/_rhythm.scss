@@ -1,4 +1,4 @@
-/*! rhythm v0.0.4 – 14.10.2014 */
+/*! rhythm v0.1.0 – 14.10.2014 */
 
 ////
 /// @author Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).
@@ -12,18 +12,14 @@ $rhythm-base-font-size: 16px !default;
 /// Distance between text baselines in pixels.
 $rhythm-base-line-height: 21px !default;
 
+/// The unit in which to output rhythm values (px | rem | em)
+$rhythm-render-unit: rem !default;
+
+/// If you want to allow rythm to lock everything to half rather than whole lines, set this to true.
+$rhythm-round-to-nearest-half-line: false !default;
+
 /// Ensure minimum leading above / below text. Number of lines will be increased if necessary.
 $rhythm-min-line-leading: 2px !default;
-
-/// The length unit in which to output rhythm values. Supported values: px, em, rem.
-/// Percent units can't be used since they make calculating padding and margins impractical,
-/// and percentage borders are not valid or supported in css.
-$rhythm-unit: rem !default;
-
-/// Allows the `adjust-font-size-to` mixin and the `rhythm-lines-for-font-size` function
-/// to round the line height to the nearest half line height instead of the
-/// nearest integral line height to avoid large spacing between lines.
-$rhythm-round-to-nearest-half-line: false !default;
 
 ////
 /// @author Pedr Browne (originally by Eric M Suzanne)
@@ -63,7 +59,7 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
     $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-base-line-height must resolve to a pixel unit.");
   }
   @if not is-supported-rhythm-unit($unit) {
-    $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-unit must be `px`, `em` or `rem`.");
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-render-unit must be `px`, `em` or `rem`.");
   }
   @return true;
 }
@@ -80,7 +76,7 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
 ///  The raw distance value
 ///
 @function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) {
-  $rhythm: convert-length($lines * $rhythm-base-line-height, $rhythm-unit, $font-size);
+  $rhythm: convert-length($lines * $rhythm-base-line-height, $rhythm-render-unit, $font-size);
   // Round pixel values
   @if unit($rhythm) == px {
     $rhythm: floor($rhythm);
@@ -107,13 +103,13 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
   @return $lines;
 }
 
-/// Is the `$rhythm-unit` in absolute units (px) or not (em, rem)
+/// Is the `$rhythm-render-unit` in absolute units (px) or not (em, rem)
 ///
 /// @returns {Bool}
 ///  Does rhythm use relative font-sizing?
 ///
 @function rhythm-relative-font-sizing() {
-  @return $rhythm-unit != px;
+  @return $rhythm-render-unit != px;
 }
 
 /// Given a font-size and line-height, make necessary adjustments to these values so that when
@@ -130,7 +126,7 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
 ///
 @function rhythm-process-base-values($font-size, $line-height) {
   // Throw error if invalid
-  $is-valid: rhythm-validate($font-size, $line-height, $rhythm-unit);
+  $is-valid: rhythm-validate($font-size, $line-height, $rhythm-render-unit);
   @if rhythm-relative-font-sizing() {
     // Adjust font size if base font-size different from default browser (16px)
     $font-size:  100% * ($font-size / $rhythm-browser-default-font-size);
@@ -213,7 +209,7 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
 }
 
 
-/// Check if the unit is supported as a value for $rhythm-unit.
+/// Check if the unit is supported as a value for $rhythm-render-unit.
 ///
 /// @param {Number} $unit
 ///  The unit.
@@ -223,6 +219,24 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
 ///
 @function is-supported-rhythm-unit($unit) {
   @return not not index($rhythm-supported-rhythm-units, $unit);
+}
+
+/// Adjust a block to have different line height to maintain the rhythm.
+/// `$lines` specifies how many multiples of the baseline rhythm each line of this
+/// font should use up. It does not have to be an integer, but it defaults to the
+/// smallest integer that is large enough to fit the font.
+///
+/// @param {String} $lines
+///  The number of lines each line of text should take up.
+///
+/// @param {String} $font-size ($rhythm-base-font-size)
+///  The font-size.
+///
+/// @output
+///  The line-height.
+///
+@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) {
+  @include rhythm-render-property(line-height, rhythm-value-for-lines($lines, $font-size));
 }
 
 /// Render rhythm values.
@@ -330,24 +344,38 @@ $rhythm-error-thrown: false;
   @if $lines == auto {
     $lines: rhythm-lines-for-font-size($font-size);
   }
-  @include rhythm-render-property(font-size, convert-length($font-size, $rhythm-unit, $from-context));
+  @include rhythm-render-property(font-size, convert-length($font-size, $rhythm-render-unit, $from-context));
   @include rhythm-render-leading($lines, $font-size);
 }
 
-/// Adjust a block to have different line height to maintain the rhythm.
-/// `$lines` specifies how many multiples of the baseline rhythm each line of this
-/// font should use up. It does not have to be an integer, but it defaults to the
-/// smallest integer that is large enough to fit the font.
+/// Use a different rhythm for a block by temporarily changing the configuration values
+/// '$rhythm-base-font-size' and '$rhythm-base-line-height'. While this will do nothing by itself,
+/// it can be combined with `rhythm-establish` to change the global rhythm temporarily, for example
+/// at a breakpoint.
 ///
-/// @param {String} $lines
-///  The number of lines each line of text should take up.
+/// @param {Number} $new-base-font-size
+///  The new `base-font-size` to use for the content of this mixin
 ///
-/// @param {String} $font-size ($rhythm-base-font-size)
-///  The font-size.
+/// @param {Number} $new-base-line-height
+///  The new `base-line-height` to use for the content of this mixin
 ///
-/// @output
-///  The line-height.
+/// @see https://github.com/chriseppstein/compass/pull/1352
+/// @see https://github.com/Compass/compass/issues/1487
 ///
-@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) {
-  @include rhythm-render-property(line-height, rhythm-value-for-lines($lines, $font-size));
+@mixin rhythm-context($new-base-font-size, $new-base-line-height) {
+
+   // Save the baseline context
+   $initial-font-size: $base-font-size;
+   $initial-line-height: $base-line-height;
+
+   // Apply the new context
+   $base-font-size: $new-base-font-size !global;
+   $base-line-height: $new-base-line-height !global;
+
+   // Render content passed to mixin
+   @content;
+
+   // Reapply the initial context
+   $base-font-size: $initial-font-size !global;
+   $base-line-height: $initial-line-height !global;
 }

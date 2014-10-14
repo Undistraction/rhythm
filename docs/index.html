@@ -8,7 +8,7 @@
   
   <meta charset="utf-8" />
 
-<title>SassDoc - v0.0.4</title>
+<title>SassDoc - v0.1.0</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
@@ -26,7 +26,7 @@
   <div class="sidebar__header">
   <h1 class="sidebar__title">
     
-      <a href="https://github.com/Undistraction/Rhythm">SassDoc - v0.0.4</a>
+      <a href="https://github.com/Undistraction/Rhythm">SassDoc - v0.1.0</a>
     
   </h1>
 </div>
@@ -140,6 +140,15 @@
           
           
             <ul class="list-unstyled">
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-render-leading" data-type="mixin">
+              <a href="#mixin-rhythm-render-leading">rhythm-render-leading
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
             <li class="sidebar__item  sassdoc__item" data-name="rhythm-render-property" data-type="mixin">
               <a href="#mixin-rhythm-render-property">rhythm-render-property
               <span class="sidebar__annotation  sidebar__annotation--private">private</span>
@@ -237,8 +246,8 @@
             
           
             
-            <li class="sidebar__item  sassdoc__item" data-name="rhythm-render-leading" data-type="mixin">
-              <a href="#mixin-rhythm-render-leading">rhythm-render-leading
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-context" data-type="mixin">
+              <a href="#mixin-rhythm-context">rhythm-context
               
               
               </a>
@@ -284,17 +293,8 @@
             
           
             
-            <li class="sidebar__item  sassdoc__item" data-name="rhythm-min-line-leading" data-type="variable">
-              <a href="#variable-rhythm-min-line-leading">rhythm-min-line-leading
-              
-              
-              </a>
-            </li>
-            
-          
-            
-            <li class="sidebar__item  sassdoc__item" data-name="rhythm-unit" data-type="variable">
-              <a href="#variable-rhythm-unit">rhythm-unit
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-render-unit" data-type="variable">
+              <a href="#variable-rhythm-render-unit">rhythm-render-unit
               
               
               </a>
@@ -304,6 +304,15 @@
             
             <li class="sidebar__item  sassdoc__item" data-name="rhythm-round-to-nearest-half-line" data-type="variable">
               <a href="#variable-rhythm-round-to-nearest-half-line">rhythm-round-to-nearest-half-line
+              
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-min-line-leading" data-type="variable">
+              <a href="#variable-rhythm-min-line-leading">rhythm-min-line-leading
               
               
               </a>
@@ -426,7 +435,7 @@
     $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;$rhythm-base-line-height must resolve to a pixel unit.&quot;);
   }
   @if not is-supported-rhythm-unit($unit) {
-    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;$rhythm-unit must be `px`, `em` or `rem`.&quot;);
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;$rhythm-render-unit must be `px`, `em` or `rem`.&quot;);
   }
   @return true;
  }"
@@ -631,7 +640,7 @@
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
     data-expanded="@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) { 
-  $rhythm: convert-length($lines * $rhythm-base-line-height, $rhythm-unit, $font-size);
+  $rhythm: convert-length($lines * $rhythm-base-line-height, $rhythm-render-unit, $font-size);
   // Round pixel values
   @if unit($rhythm) == px {
     $rhythm: floor($rhythm);
@@ -995,7 +1004,7 @@
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
     data-expanded="@function rhythm-relative-font-sizing() { 
-  @return $rhythm-unit != px;
+  @return $rhythm-render-unit != px;
  }"
     data-collapsed="@function rhythm-relative-font-sizing() { ... }"><code>@function rhythm-relative-font-sizing() { ... }</code></pre>
 
@@ -1014,7 +1023,7 @@
     
   <h3 class="item__sub-heading">Description</h3>
 
-  <div class="item__description"><p>Is the <code>$rhythm-unit</code> in absolute units (px) or not (em, rem)</p>
+  <div class="item__description"><p>Is the <code>$rhythm-render-unit</code> in absolute units (px) or not (em, rem)</p>
 </div>
 
 
@@ -1151,7 +1160,7 @@
     data-current-state="collapsed"
     data-expanded="@function rhythm-process-base-values($font-size, $line-height) { 
   // Throw error if invalid
-  $is-valid: rhythm-validate($font-size, $line-height, $rhythm-unit);
+  $is-valid: rhythm-validate($font-size, $line-height, $rhythm-render-unit);
   @if rhythm-relative-font-sizing() {
     // Adjust font size if base font-size different from default browser (16px)
     $font-size:  100% * ($font-size / $rhythm-browser-default-font-size);
@@ -1662,7 +1671,7 @@ set on the <code>html</code> element the document will default to these values.<
     
   <h3 class="item__sub-heading">Description</h3>
 
-  <div class="item__description"><p>Check if the unit is supported as a value for $rhythm-unit.</p>
+  <div class="item__description"><p>Check if the unit is supported as a value for $rhythm-render-unit.</p>
 </div>
 
 
@@ -1839,7 +1848,7 @@ set on the <code>html</code> element the document will default to these values.<
     data-collapsed="@function rhythm-throw-error($error, $message) { ... }"><code>@function rhythm-throw-error($error, $message) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L246-L256" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L264-L274" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1999,6 +2008,201 @@ with the error saved to <code>$box-last-error</code> instead so tests can check 
 
               
               
+                <section class="main__item  item" id="mixin-rhythm-render-leading">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#mixin-rhythm-render-leading">rhythm-render-leading</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { 
+  @include rhythm-render-property(line-height, rhythm-value-for-lines($lines, $font-size));
+ }"
+    data-collapsed="@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }"><code>@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L215-L217" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Adjust a block to have different line height to maintain the rhythm.
+<code>$lines</code> specifies how many multiples of the baseline rhythm each line of this
+font should use up. It does not have to be an integer, but it defaults to the
+smallest integer that is large enough to fit the font.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$lines</code></th>
+          <td data-label="desc"><p>The number of lines each line of text should take up.</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$font-size</code></th>
+          <td data-label="desc"><p>The font-size.</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            <code>$rhythm-base-font-size</code>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
                 <section class="main__item  item" id="mixin-rhythm-render-property">
 
 <h3 class="item__heading">
@@ -2063,7 +2267,7 @@ with the error saved to <code>$box-last-error</code> instead so tests can check 
     data-collapsed="@mixin rhythm-render-property(${String), $values) { ... }"><code>@mixin rhythm-render-property(${String), $values) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L212-L224" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L230-L242" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -2900,7 +3104,7 @@ with the error saved to <code>$box-last-error</code> instead so tests can check 
   @if $lines == auto {
     $lines: rhythm-lines-for-font-size($font-size);
   }
-  @include rhythm-render-property(font-size, convert-length($font-size, $rhythm-unit, $from-context));
+  @include rhythm-render-property(font-size, convert-length($font-size, $rhythm-render-unit, $from-context));
   @include rhythm-render-leading($lines, $font-size);
  }"
     data-collapsed="@mixin rhythm($font-size, $lines, $from-context) { ... }"><code>@mixin rhythm($font-size, $lines, $from-context) { ... }</code></pre>
@@ -3062,12 +3266,12 @@ Use <code>$from-context</code> to adjust from a font-size other than the base fo
 
 </section>
               
-                <section class="main__item  item" id="mixin-rhythm-render-leading">
+                <section class="main__item  item" id="mixin-rhythm-context">
 
 <h3 class="item__heading">
   
 
-  <a class="item__name" href="#mixin-rhythm-render-leading">rhythm-render-leading</a>
+  <a class="item__name" href="#mixin-rhythm-context">rhythm-context</a>
 
   
 
@@ -3097,8 +3301,6 @@ Use <code>$from-context</code> to adjust from a font-size other than the base fo
   
 
   
-    
-  
 
   
 
@@ -3110,13 +3312,27 @@ Use <code>$from-context</code> to adjust from a font-size other than the base fo
 <div class="relative  clear  code--collapsed">
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
-    data-expanded="@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { 
-  @include rhythm-render-property(line-height, rhythm-value-for-lines($lines, $font-size));
+    data-expanded="@mixin rhythm-context($new-base-font-size, $new-base-line-height) { 
+
+   // Save the baseline context
+   $initial-font-size: $base-font-size;
+   $initial-line-height: $base-line-height;
+
+   // Apply the new context
+   $base-font-size: $new-base-font-size !global;
+   $base-line-height: $new-base-line-height !global;
+
+   // Render content passed to mixin
+   @content;
+
+   // Reapply the initial context
+   $base-font-size: $initial-font-size !global;
+   $base-line-height: $initial-line-height !global;
  }"
-    data-collapsed="@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }"><code>@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }</code></pre>
+    data-collapsed="@mixin rhythm-context($new-base-font-size, $new-base-line-height) { ... }"><code>@mixin rhythm-context($new-base-font-size, $new-base-line-height) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_api.scss#L67-L69" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_api.scss#L67-L83" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -3130,10 +3346,10 @@ Use <code>$from-context</code> to adjust from a font-size other than the base fo
     
   <h3 class="item__sub-heading">Description</h3>
 
-  <div class="item__description"><p>Adjust a block to have different line height to maintain the rhythm.
-<code>$lines</code> specifies how many multiples of the baseline rhythm each line of this
-font should use up. It does not have to be an integer, but it defaults to the
-smallest integer that is large enough to fit the font.</p>
+  <div class="item__description"><p>Use a different rhythm for a block by temporarily changing the configuration values
+&#39;$rhythm-base-font-size&#39; and &#39;$rhythm-base-line-height&#39;. While this will do nothing by itself,
+it can be combined with <code>rhythm-establish</code> to change the global rhythm temporarily, for example
+at a breakpoint.</p>
 </div>
 
 
@@ -3155,12 +3371,12 @@ smallest integer that is large enough to fit the font.</p>
     <tbody>
       
         <tr class="item__parameter">
-          <th scope="row" data-label="name"><code>$lines</code></th>
-          <td data-label="desc"><p>The number of lines each line of text should take up.</p>
+          <th scope="row" data-label="name"><code>$new-base-font-size</code></th>
+          <td data-label="desc"><p>The new <code>base-font-size</code> to use for the content of this mixin</p>
 </td>
           <td data-label="type">
           
-            String
+            Number
           
           </td>
           <td data-label="default">
@@ -3171,17 +3387,17 @@ smallest integer that is large enough to fit the font.</p>
         </tr>
       
         <tr class="item__parameter">
-          <th scope="row" data-label="name"><code>$font-size</code></th>
-          <td data-label="desc"><p>The font-size.</p>
+          <th scope="row" data-label="name"><code>$new-base-line-height</code></th>
+          <td data-label="desc"><p>The new <code>base-line-height</code> to use for the content of this mixin</p>
 </td>
           <td data-label="type">
           
-            String
+            Number
           
           </td>
           <td data-label="default">
           
-            <code>$rhythm-base-font-size</code>
+            &mdash;<span class="visually-hidden"> none</span>
           
           </td>
         </tr>
@@ -3489,6 +3705,218 @@ smallest integer that is large enough to fit the font.</p>
 
 </section>
               
+                <section class="main__item  item" id="variable-rhythm-render-unit">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-rhythm-render-unit">rhythm-render-unit</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$rhythm-render-unit: rem !default;</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_config.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>The unit in which to output rhythm values (px | rem | em)</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="variable-rhythm-round-to-nearest-half-line">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-rhythm-round-to-nearest-half-line">rhythm-round-to-nearest-half-line</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$rhythm-round-to-nearest-half-line: false !default;</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_config.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>If you want to allow rythm to lock everything to half rather than whole lines, set this to true.</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
                 <section class="main__item  item" id="variable-rhythm-min-line-leading">
 
 <h3 class="item__heading">
@@ -3595,222 +4023,6 @@ smallest integer that is large enough to fit the font.</p>
 
 </section>
               
-                <section class="main__item  item" id="variable-rhythm-unit">
-
-<h3 class="item__heading">
-  
-
-  <a class="item__name" href="#variable-rhythm-unit">rhythm-unit</a>
-
-  
-
-  
-</h3>
-
-
-
-
-
-
-
-
-
-<div class="relative  clear">
-  <pre class="item__code  language-scss"><code>$rhythm-unit: rem !default;</code></pre>
-
-  
-    <a href="https://github.com/Undistraction/box/rhythm/_config.scss" class="item__source-link" target="_blank">View source</a>
-  
-</div>
-
-
-
-
-
-
-
-  
-    
-    
-  <h3 class="item__sub-heading">Description</h3>
-
-  <div class="item__description"><p>The length unit in which to output rhythm values. Supported values: px, em, rem.
-Percent units can&#39;t be used since they make calculating padding and margins impractical,
-and percentage borders are not valid or supported in css.</p>
-</div>
-
-
-  
-    
-    
-  
-    
-    
-
-  
-    
-    
-
-
-
-
-  
-    
-    
-
-  
-    
-    
-
-
-
-
-
-  
-    
-    
-
-  
-    
-    
-
-
-
-
-  
-    
-    
-
-  
-    
-    
-  
-    
-    
-  <h3 class="item__sub-heading">Author</h3>
-
-  <ul class="list-unstyled">
-    
-      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
-</li>
-    
-  </ul>
-
-
-  
-
-
-
-</section>
-              
-                <section class="main__item  item" id="variable-rhythm-round-to-nearest-half-line">
-
-<h3 class="item__heading">
-  
-
-  <a class="item__name" href="#variable-rhythm-round-to-nearest-half-line">rhythm-round-to-nearest-half-line</a>
-
-  
-
-  
-</h3>
-
-
-
-
-
-
-
-
-
-<div class="relative  clear">
-  <pre class="item__code  language-scss"><code>$rhythm-round-to-nearest-half-line: false !default;</code></pre>
-
-  
-    <a href="https://github.com/Undistraction/box/rhythm/_config.scss" class="item__source-link" target="_blank">View source</a>
-  
-</div>
-
-
-
-
-
-
-
-  
-    
-    
-  <h3 class="item__sub-heading">Description</h3>
-
-  <div class="item__description"><p>Allows the <code>adjust-font-size-to</code> mixin and the <code>rhythm-lines-for-font-size</code> function
-to round the line height to the nearest half line height instead of the
-nearest integral line height to avoid large spacing between lines.</p>
-</div>
-
-
-  
-    
-    
-  
-    
-    
-
-  
-    
-    
-
-
-
-
-  
-    
-    
-
-  
-    
-    
-
-
-
-
-
-  
-    
-    
-
-  
-    
-    
-
-
-
-
-  
-    
-    
-
-  
-    
-    
-  
-    
-    
-  <h3 class="item__sub-heading">Author</h3>
-
-  <ul class="list-unstyled">
-    
-      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
-</li>
-    
-  </ul>
-
-
-  
-
-
-
-</section>
-              
             </section>
           
         
@@ -3835,7 +4047,7 @@ nearest integral line height to avoid large spacing between lines.</p>
           
 
           <!-- Version -->
-          <span class="project-info__version"> - v0.0.4</span>
+          <span class="project-info__version"> - v0.1.0</span>
 
           <!-- License -->
           
