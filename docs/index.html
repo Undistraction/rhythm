@@ -8,7 +8,7 @@
   
   <meta charset="utf-8" />
 
-<title>SassDoc - v0.1.3</title>
+<title>SassDoc - v0.1.4</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
@@ -26,7 +26,7 @@
   <div class="sidebar__header">
   <h1 class="sidebar__title">
     
-      <a href="https://github.com/Undistraction/Rhythm">SassDoc - v0.1.3</a>
+      <a href="https://github.com/Undistraction/Rhythm">SassDoc - v0.1.4</a>
     
   </h1>
 </div>
@@ -3315,19 +3315,19 @@ Use <code>$from-context</code> to adjust from a font-size other than the base fo
     data-expanded="@mixin rhythm-context($new-base-font-size, $new-base-line-height) { 
 
    // Save the baseline context
-   $initial-font-size: $base-font-size;
-   $initial-line-height: $base-line-height;
+   $initial-font-size: $rhythm-base-font-size;
+   $initial-line-height: $rhythm-base-line-height;
 
    // Apply the new context
-   $base-font-size: $new-base-font-size !global;
-   $base-line-height: $new-base-line-height !global;
+   $rhythm-base-font-size: $new-base-font-size !global;
+   $rhythm-base-line-height: $new-base-line-height !global;
 
    // Render content passed to mixin
    @content;
 
    // Reapply the initial context
-   $base-font-size: $initial-font-size !global;
-   $base-line-height: $initial-line-height !global;
+   $rhythm-base-font-size: $initial-font-size !global;
+   $rhythm-base-line-height: $initial-line-height !global;
  }"
     data-collapsed="@mixin rhythm-context($new-base-font-size, $new-base-line-height) { ... }"><code>@mixin rhythm-context($new-base-font-size, $new-base-line-height) { ... }</code></pre>
 
@@ -4047,7 +4047,7 @@ at a breakpoint.</p>
           
 
           <!-- Version -->
-          <span class="project-info__version"> - v0.1.3</span>
+          <span class="project-info__version"> - v0.1.4</span>
 
           <!-- License -->
           
