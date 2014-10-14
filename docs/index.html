@@ -1,0 +1,3867 @@
+<!doctype html>
+
+
+
+
+<html lang="en">
+<head>
+  
+  <meta charset="utf-8" />
+
+<title>SassDoc - v0.0.2</title>
+<link rel="stylesheet" href="assets/css/main.css" />
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width">
+<meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible">
+
+<!-- Thanks to Sass-lang.com for the icons -->
+<link href="http://sass-lang.com/favicon.ico" rel="shortcut icon">
+
+</head>
+<body>
+
+  
+  <aside class="sidebar" role="nav">
+    
+  <div class="sidebar__header">
+  <h1 class="sidebar__title">
+    
+      <a href="https://github.com/Undistraction/Rhythm">SassDoc - v0.0.2</a>
+    
+  </h1>
+</div>
+
+<div class="sidebar__body">
+  
+  
+    <button type="button" class="btn-toggle  js-btn-toggle" data-alt="Open all">Close all</button>
+
+    
+    
+      <p class="sidebar__item  sidebar__item--heading" data-slug="support"><a href="#support">Support</a></p>
+
+      
+      
+        <div>
+
+        
+        
+
+        
+        
+          <p class="sidebar__item  sidebar__item--sub-heading" data-slug="support-function"><a href="#support-function">functions</a></p>
+
+          
+          
+            <ul class="list-unstyled">
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-validate" data-type="function">
+              <a href="#function-rhythm-validate">rhythm-validate
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-value-for-lines" data-type="function">
+              <a href="#function-rhythm-value-for-lines">rhythm-value-for-lines
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-lines-for-font-size" data-type="function">
+              <a href="#function-rhythm-lines-for-font-size">rhythm-lines-for-font-size
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-relative-font-sizing" data-type="function">
+              <a href="#function-rhythm-relative-font-sizing">rhythm-relative-font-sizing
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-process-base-values" data-type="function">
+              <a href="#function-rhythm-process-base-values">rhythm-process-base-values
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-convert-value" data-type="function">
+              <a href="#function-rhythm-convert-value">rhythm-convert-value
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="is-supported-rhythm-unit" data-type="function">
+              <a href="#function-is-supported-rhythm-unit">is-supported-rhythm-unit
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-throw-error" data-type="function">
+              <a href="#function-rhythm-throw-error">rhythm-throw-error
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            </ul>
+          
+        
+        
+      
+        
+
+        
+        
+
+        
+        
+          <p class="sidebar__item  sidebar__item--sub-heading" data-slug="support-mixin"><a href="#support-mixin">mixins</a></p>
+
+          
+          
+            <ul class="list-unstyled">
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-render-property" data-type="mixin">
+              <a href="#mixin-rhythm-render-property">rhythm-render-property
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            </ul>
+          
+        
+        
+      
+        
+
+        
+        
+
+        
+        
+          <p class="sidebar__item  sidebar__item--sub-heading" data-slug="support-variable"><a href="#support-variable">variables</a></p>
+
+          
+          
+            <ul class="list-unstyled">
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-supported-rhythm-units" data-type="variable">
+              <a href="#variable-rhythm-supported-rhythm-units">rhythm-supported-rhythm-units
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-browser-default-font-size" data-type="variable">
+              <a href="#variable-rhythm-browser-default-font-size">rhythm-browser-default-font-size
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-invalid-value-error" data-type="variable">
+              <a href="#variable-rhythm-invalid-value-error">rhythm-invalid-value-error
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-invalid-unit-error" data-type="variable">
+              <a href="#variable-rhythm-invalid-unit-error">rhythm-invalid-unit-error
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            </ul>
+          
+        
+        </div>
+      
+
+    
+      <p class="sidebar__item  sidebar__item--heading" data-slug="api"><a href="#api">API</a></p>
+
+      
+      
+        <div>
+
+        
+        
+
+        
+        
+          <p class="sidebar__item  sidebar__item--sub-heading" data-slug="api-mixin"><a href="#api-mixin">mixins</a></p>
+
+          
+          
+            <ul class="list-unstyled">
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-establish" data-type="mixin">
+              <a href="#mixin-rhythm-establish">rhythm-establish
+              
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm" data-type="mixin">
+              <a href="#mixin-rhythm">rhythm
+              
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-render-leading" data-type="mixin">
+              <a href="#mixin-rhythm-render-leading">rhythm-render-leading
+              
+              
+              </a>
+            </li>
+            </ul>
+          
+        
+        </div>
+      
+
+    
+      <p class="sidebar__item  sidebar__item--heading" data-slug="config"><a href="#config">Config</a></p>
+
+      
+      
+        <div>
+
+        
+        
+
+        
+        
+          <p class="sidebar__item  sidebar__item--sub-heading" data-slug="config-variable"><a href="#config-variable">variables</a></p>
+
+          
+          
+            <ul class="list-unstyled">
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-base-font-size" data-type="variable">
+              <a href="#variable-rhythm-base-font-size">rhythm-base-font-size
+              
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-base-line-height" data-type="variable">
+              <a href="#variable-rhythm-base-line-height">rhythm-base-line-height
+              
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-min-line-leading" data-type="variable">
+              <a href="#variable-rhythm-min-line-leading">rhythm-min-line-leading
+              
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-unit" data-type="variable">
+              <a href="#variable-rhythm-unit">rhythm-unit
+              
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-round-to-nearest-half-line" data-type="variable">
+              <a href="#variable-rhythm-round-to-nearest-half-line">rhythm-round-to-nearest-half-line
+              
+              
+              </a>
+            </li>
+            </ul>
+          
+        
+        </div>
+      
+
+    
+  
+</div>
+
+
+  </aside>
+
+  
+  <article class="main" role="main">
+
+    
+    <header class="header" role="banner">
+  <div class="container">
+  
+    <div class="header__description">
+      <p>Compass&#39;s vertical-rhythm module extracted and with box-model properties removed</p>
+
+    </div>
+  
+
+    <div class="sassdoc__searchbar  searchbar">
+       <label for="js-search-input" class="visually-hidden">Search</label>
+       <div class="searchbar__form" id="js-search">
+         <input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search" />
+         <ul class="searchbar__suggestions" id="js-search-suggestions"></ul>
+       </div>
+     </div>
+  </div>
+</header>
+
+
+    <div class="container">
+    
+
+  
+  
+
+    
+    
+      <section class="main__section">
+        <h1 class="main__heading" id="support">Support</h1>
+
+        
+        
+
+          
+          
+
+          
+          
+            <section class="main__sub-section" id="support-function">
+              <h2 class="main__heading--secondary">functions</h2>
+
+              
+              
+                <section class="main__item  item" id="function-rhythm-validate">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#function-rhythm-validate">rhythm-validate</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function rhythm-validate($font-size, $line-height) { 
+  @if unit($font-size) != &#39;px&#39; {
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;$rhythm-base-font-size must resolve to a pixel unit.&quot;);
+  }
+
+  @if unit($line-height) != &#39;px&#39; {
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;$rhythm-base-line-height must resolve to a pixel unit.&quot;);
+  }
+  @if not is-supported-rhythm-unit($unit) {
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;$rhythm-unit must be `px`, `em` or `rem`.&quot;);
+  }
+  @return true;
+ }"
+    data-collapsed="@function rhythm-validate($font-size, $line-height) { ... }"><code>@function rhythm-validate($font-size, $line-height) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L30-L42" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Check the given <code>font-size</code> and <code>line-height</code> to make sure they are valid values.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$font-size</code></th>
+          <td data-label="desc"><p>The font size</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$line-height</code></th>
+          <td data-label="desc"><p>The line-height</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Returns</h3>
+
+  <p class="sassdoc__item-description"><p>Were the values valid?</p>
+
+  
+    Bool
+  
+  </p>
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="function-rhythm-value-for-lines">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#function-rhythm-value-for-lines">rhythm-value-for-lines</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) { 
+  $rhythm: convert-length($lines * $rhythm-base-line-height, $rhythm-unit, $font-size);
+  // Round pixel values
+  @if unit($rhythm) == px {
+    $rhythm: floor($rhythm);
+  }
+  @return $rhythm;
+ }"
+    data-collapsed="@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) { ... }"><code>@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L55-L62" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Calculate a raw distance value based on number of lines and font-size</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$lines</code></th>
+          <td data-label="desc"><p>The number of lines of distance</p>
+</td>
+          <td data-label="type">
+          
+            Number
+          
+          </td>
+          <td data-label="default">
+          
+            <code>1</code>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$font-size</code></th>
+          <td data-label="desc"><p>The font size to fit into the lines</p>
+</td>
+          <td data-label="type">
+          
+            Number
+          
+          </td>
+          <td data-label="default">
+          
+            <code>$rhythm-base-font-size</code>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Returns</h3>
+
+  <p class="sassdoc__item-description"><p>The raw distance value</p>
+
+  
+    Number
+  
+  </p>
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="function-rhythm-lines-for-font-size">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#function-rhythm-lines-for-font-size">rhythm-lines-for-font-size</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function rhythm-lines-for-font-size($font-size) { 
+  $lines: if($rhythm-round-to-nearest-half-line,
+             ceil(2 * $font-size / $rhythm-base-line-height) / 2,
+             ceil($font-size / $rhythm-base-line-height));
+  // If lines are cramped include some extra leading.
+  @if ($lines * $rhythm-base-line-height - $font-size) &lt; ($rhythm-min-line-leading * 2) {
+    $lines: $lines + if($rhythm-round-to-nearest-half-line, 0.5, 1);
+  }
+  @return $lines;
+ }"
+    data-collapsed="@function rhythm-lines-for-font-size($font-size) { ... }"><code>@function rhythm-lines-for-font-size($font-size) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L72-L81" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Calculate the minimum multiple of rhythm units needed to contain the font-size.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$font-size</code></th>
+          <td data-label="desc"><p>The font size.</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Returns</h3>
+
+  <p class="sassdoc__item-description"><p>The number of lines needed to house this font size.</p>
+
+  
+    Number
+  
+  </p>
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="function-rhythm-relative-font-sizing">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#function-rhythm-relative-font-sizing">rhythm-relative-font-sizing</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function rhythm-relative-font-sizing() { 
+  @return $rhythm-unit != px;
+ }"
+    data-collapsed="@function rhythm-relative-font-sizing() { ... }"><code>@function rhythm-relative-font-sizing() { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L88-L90" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Is the <code>$rhythm-unit</code> in absolute units (px) or not (em, rem)</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <p>None.</p>
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Returns</h3>
+
+  <p class="sassdoc__item-description"><p>Does rhythm use relative font-sizing?</p>
+
+  
+    Bool
+  
+  </p>
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="function-rhythm-process-base-values">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#function-rhythm-process-base-values">rhythm-process-base-values</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function rhythm-process-base-values($font-size, $line-height) { 
+  // Throw error if invalid
+  $is-valid: rhythm-validate($font-size, $line-height, $rhythm-unit);
+  @if rhythm-relative-font-sizing() {
+    // Adjust font size if base font-size different from default browser (16px)
+    $font-size:  100% * ($font-size / $rhythm-browser-default-font-size);
+    // Use ems instead of rems to avoid Webkit bug. Usage of rems is uneffected as they will use the
+    // em value of the html element.
+    $line-height: rhythm-convert-value($line-height, em);
+  } @else {
+    // ( Use given font-size )
+    $line-height: round(line-height);
+  }
+  @return ($font-size $line-height);
+ }"
+    data-collapsed="@function rhythm-process-base-values($font-size, $line-height) { ... }"><code>@function rhythm-process-base-values($font-size, $line-height) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L104-L118" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Given a font-size and line-height, make necessary adjustments to these values so that when
+set on the <code>html</code> element the document will default to these values.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$font-size</code></th>
+          <td data-label="desc"><p>The font size.</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$line-height</code></th>
+          <td data-label="desc"><p>The line-height</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Returns</h3>
+
+  <p class="sassdoc__item-description"><p>The adjusted font size and line-height</p>
+
+  
+    List
+  
+  </p>
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="function-rhythm-convert-value">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#function-rhythm-convert-value">rhythm-convert-value</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function rhythm-convert-value($length, $to-unit, $from-context: $rhythm-base-font-size, $to-context: $from-context) { 
+
+  $from-unit: unit($from-length);
+
+  // Optimize for cases where `from` and `to` units are accidentally the same.
+  @if $from-unit == $to-unit { @return $from-length; }
+
+  // Context values must be in px so we can determine a conversion ratio for
+  // relative units.
+  @if unit($from-context) != &#39;px&#39; {
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;Parameter $from-context must resolve to a value in pixel units.&quot;);
+  }
+  @if unit($to-context) != &#39;px&#39; {
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;Parameter $to-context must resolve to a value in pixel units.&quot;);
+  }
+
+  // Convert input length to pixels
+  $px-length: $from-length;
+
+  @if $from-unit != &#39;px&#39; {
+    // Convert relative units using the from-context parameter.
+    @if      $from-unit == &#39;em&#39;  { $px-length: $from-length * $from-context / 1em }
+    @else if $from-unit == &#39;rem&#39; { $px-length: $from-length * $rhythm-base-font-size / 1rem }
+    @else if $from-unit == &#39;%&#39;   { $px-length: $from-length * $from-context / 100% }
+    @else {
+      $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;#{$from-unit} unit not supported&quot;);
+      @return $length;
+    }
+  }
+
+  // Convert length in pixels to the output unit
+  $output-length: $px-length;
+  @if $to-unit != &#39;px&#39; {
+    // Relative units
+    @if      $to-unit == &#39;em&#39;  { $output-length: $px-length * 1em / $to-context }
+    @else if $to-unit == &#39;rem&#39; { $output-length: $px-length * 1rem / $rhythm-base-font-size }
+    @else if $to-unit == &#39;%&#39;   { $output-length: $px-length * 100% / $to-context }
+    @else {
+      $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;#{$to-unit} unit not supported&quot;);
+    }
+  }
+
+  @return $output-length;
+ }"
+    data-collapsed="@function rhythm-convert-value($length, $to-unit, $from-context: $rhythm-base-font-size, $to-context: $from-context) { ... }"><code>@function rhythm-convert-value($length, $to-unit, $from-context: $rhythm-base-font-size, $to-context: $from-context) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L138-L186" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Convert any CSS length or percentage value to any another.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$length</code></th>
+          <td data-label="desc"><p>A css length or percentage value</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$to-unit</code></th>
+          <td data-label="desc"><p>String matching a css unit keyword, e.g. &#39;em&#39;, &#39;%&#39;, etc.</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$from-context</code></th>
+          <td data-label="desc"><p>When converting from relative units, the absolute length (in px) to
+  which $length refers (e.g. for $lengths in em units, would normally be the
+  font-size of the current element).</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            <code>$rhythm-base-font-size</code>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$to-context</code></th>
+          <td data-label="desc"><p>For converting to relative units, the absolute length in px to which the
+  output value will refer. Defaults to the same as $from-context, since it is
+  rarely needed.</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            <code>$from-context</code>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="function-is-supported-rhythm-unit">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#function-is-supported-rhythm-unit">is-supported-rhythm-unit</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function is-supported-rhythm-unit($unit) { 
+  @return not not index($rhythm-supported-rhythm-units, $unit);
+ }"
+    data-collapsed="@function is-supported-rhythm-unit($unit) { ... }"><code>@function is-supported-rhythm-unit($unit) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L197-L199" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Check if the unit is supported as a value for $rhythm-unit.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$unit</code></th>
+          <td data-label="desc"><p>The unit.</p>
+</td>
+          <td data-label="type">
+          
+            Number
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Returns</h3>
+
+  <p class="sassdoc__item-description"><p>Was the unit supported?</p>
+
+  
+    Bool
+  
+  </p>
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="function-rhythm-throw-error">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#function-rhythm-throw-error">rhythm-throw-error</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function rhythm-throw-error($error, $message) { 
+  @if $rhythm-under-test {
+    @if not $rhythm-error-thrown {
+      $rhythm-error-thrown: true !global;
+      $rhythm-last-error: $error !global;
+    }
+  } @else {
+    @error &quot;#{$error} #{$message}&quot;;
+  }
+  @return null;
+ }"
+    data-collapsed="@function rhythm-throw-error($error, $message) { ... }"><code>@function rhythm-throw-error($error, $message) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L246-L256" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>By default, this function will throw a Sass error, but allows errors to be stopped during testing,
+with the error saved to <code>$box-last-error</code> instead so tests can check it was thrown.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$error</code></th>
+          <td data-label="desc"><p>The name of the error</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$message</code></th>
+          <td data-label="desc"><p>The error message</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Returns</h3>
+
+  <p class="sassdoc__item-description"><p>A map of offsets to be rendered as CSS properties</p>
+
+  
+    Map
+  
+  </p>
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+            </section>
+          
+        
+
+          
+          
+
+          
+          
+            <section class="main__sub-section" id="support-mixin">
+              <h2 class="main__heading--secondary">mixins</h2>
+
+              
+              
+                <section class="main__item  item" id="mixin-rhythm-render-property">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#mixin-rhythm-render-property">rhythm-render-property</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin rhythm-render-property(${String), $values) { 
+  $output: ();
+  @each $value in $values {
+    @if unit($value) == px {
+      // Ensure all pixel values are rounded to the nearest pixel.
+      $output: join($output, round($value));
+    }
+    @else {
+      $output: join($output, $value);
+    }
+  }
+  #{$property}: $output;
+ }"
+    data-collapsed="@mixin rhythm-render-property(${String), $values) { ... }"><code>@mixin rhythm-render-property(${String), $values) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L212-L224" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Render rhythm values.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>${String)</code></th>
+          <td data-label="desc"><p>$property
+ The property to render</p>
+</td>
+          <td data-label="type">
+          
+            
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$values</code></th>
+          <td data-label="desc"><p>The propery values.</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+            </section>
+          
+        
+
+          
+          
+
+          
+          
+            <section class="main__sub-section" id="support-variable">
+              <h2 class="main__heading--secondary">variables</h2>
+
+              
+              
+                <section class="main__item  item" id="variable-rhythm-supported-rhythm-units">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#variable-rhythm-supported-rhythm-units">rhythm-supported-rhythm-units</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$rhythm-supported-rhythm-units: 'px' 'rem' 'em';</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Units supported as rythm units</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="variable-rhythm-browser-default-font-size">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#variable-rhythm-browser-default-font-size">rhythm-browser-default-font-size</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$rhythm-browser-default-font-size: 16px;</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Default font-size for all browsers (don&#39;t change)</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="variable-rhythm-invalid-value-error">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#variable-rhythm-invalid-value-error">rhythm-invalid-value-error</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$rhythm-invalid-value-error: "Invalid Value Error";</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Error thrown when a value is invalid</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="variable-rhythm-invalid-unit-error">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#variable-rhythm-invalid-unit-error">rhythm-invalid-unit-error</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$rhythm-invalid-unit-error: "Invalid Unit Error";</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Error thrown when a unit is invalid</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (originally by Eric M Suzanne)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+            </section>
+          
+        
+
+      </section>
+    
+      <section class="main__section">
+        <h1 class="main__heading" id="api">API</h1>
+
+        
+        
+
+          
+          
+
+          
+          
+            <section class="main__sub-section" id="api-mixin">
+              <h2 class="main__heading--secondary">mixins</h2>
+
+              
+              
+                <section class="main__item  item" id="mixin-rhythm-establish">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#mixin-rhythm-establish">rhythm-establish</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin rhythm-establish($font-size: $rhythm-base-font-size) { 
+  $processed-values: rhythm-process-base-values($font-size, $line-height);
+
+  // Render HTML element
+  html {
+      font-size: nth($processed-values, 1);
+      line-height: nth($processed-values, 2);
+  }
+ }"
+    data-collapsed="@mixin rhythm-establish($font-size: $rhythm-base-font-size) { ... }"><code>@mixin rhythm-establish($font-size: $rhythm-base-font-size) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_api.scss#L15-L23" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Establish a rhythm throughout the document using a font-size and line-height.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$font-size</code></th>
+          <td data-label="desc"><p>The font-size to use as base</p>
+</td>
+          <td data-label="type">
+          
+            Number
+          
+          </td>
+          <td data-label="default">
+          
+            <code>$rhythm-base-font-size</code>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="mixin-rhythm">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#mixin-rhythm">rhythm</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin rhythm($font-size, $lines, $from-context) { 
+  $font-size: rhythm-convert-value($font-size, px, $from-context);
+
+  @if $lines == auto {
+    $lines: rhythm-lines-for-font-size($font-size);
+  }
+  @include rhythm-render-property(font-size, convert-length($font-size, $rhythm-unit, $from-context));
+  @include rhythm-render-leading($lines, $font-size);
+ }"
+    data-collapsed="@mixin rhythm($font-size, $lines, $from-context) { ... }"><code>@mixin rhythm($font-size, $lines, $from-context) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_api.scss#L43-L51" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Adjust a block to have a different font size and line height to maintain the
+rhythm. <code>$lines</code> specifies how many multiples of the baseline rhythm each line
+of this font should use up. It does not have to be an integer, but it
+defaults to the smallest integer that is large enough to fit the font.
+Use <code>$from-context</code> to adjust from a font-size other than the base font-size.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$font-size</code></th>
+          <td data-label="desc"><p>The font-size for this block</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$lines</code></th>
+          <td data-label="desc"><p>The number of rhythm units (lines) each line of text should should fill.</p>
+</td>
+          <td data-label="type">
+          
+            Number
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$from-context</code></th>
+          <td data-label="desc"><p>The context of the block (when using ems)</p>
+</td>
+          <td data-label="type">
+          
+            Number
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="mixin-rhythm-render-leading">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#mixin-rhythm-render-leading">rhythm-render-leading</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { 
+  @include rhythm-render-property(line-height, rhythm-value-for-lines($lines, $font-size));
+ }"
+    data-collapsed="@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }"><code>@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_api.scss#L67-L69" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Adjust a block to have different line height to maintain the rhythm.
+<code>$lines</code> specifies how many multiples of the baseline rhythm each line of this
+font should use up. It does not have to be an integer, but it defaults to the
+smallest integer that is large enough to fit the font.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$lines</code></th>
+          <td data-label="desc"><p>The number of lines each line of text should take up.</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$font-size</code></th>
+          <td data-label="desc"><p>The font-size.</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            <code>$rhythm-base-font-size</code>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+            </section>
+          
+        
+
+      </section>
+    
+      <section class="main__section">
+        <h1 class="main__heading" id="config">Config</h1>
+
+        
+        
+
+          
+          
+
+          
+          
+            <section class="main__sub-section" id="config-variable">
+              <h2 class="main__heading--secondary">variables</h2>
+
+              
+              
+                <section class="main__item  item" id="variable-rhythm-base-font-size">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-rhythm-base-font-size">rhythm-base-font-size</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$rhythm-base-font-size: 16px !default;</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_config.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Default font size for all text in pixels</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="variable-rhythm-base-line-height">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-rhythm-base-line-height">rhythm-base-line-height</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$rhythm-base-line-height: 21px !default;</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_config.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Distance between text baselines in pixels.</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="variable-rhythm-min-line-leading">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-rhythm-min-line-leading">rhythm-min-line-leading</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$rhythm-min-line-leading: 2px !default;</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_config.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Ensure minimum leading above / below text. Number of lines will be increased if necessary.</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="variable-rhythm-unit">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-rhythm-unit">rhythm-unit</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$rhythm-unit: rem !default;</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_config.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>The length unit in which to output rhythm values. Supported values: px, em, rem.
+Percent units can&#39;t be used since they make calculating padding and margins impractical,
+and percentage borders are not valid or supported in css.</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="variable-rhythm-round-to-nearest-half-line">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-rhythm-round-to-nearest-half-line">rhythm-round-to-nearest-half-line</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$rhythm-round-to-nearest-half-line: false !default;</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_config.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Allows the <code>adjust-font-size-to</code> mixin and the <code>rhythm-lines-for-font-size</code> function
+to round the line height to the nearest half line height instead of the
+nearest integral line height to avoid large spacing between lines.</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+            </section>
+          
+        
+
+      </section>
+    
+
+  
+
+
+    </div>
+
+    
+    
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      
+        <div class="footer__project-info  project-info">
+          <!-- Name and URL -->
+          
+            <a class="project-info__name" href="https://github.com/Undistraction/Rhythm">SassDoc</a>
+          
+
+          <!-- Version -->
+          <span class="project-info__version"> - v0.0.2</span>
+
+          <!-- License -->
+          
+          <span class="project-info__license">, under
+            
+              MIT-LICENSE
+            
+            </span>
+          
+        </div>
+      
+
+      
+        <span class="footer__watermark">Built with <a href="https://github.com/SassDoc/sassdoc">SassDoc</a>.</span>
+      
+    </div>
+  </footer>
+
+
+  </article>
+
+
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="assets/js/main.min.js"></script>
+
+</body>
+</html>
