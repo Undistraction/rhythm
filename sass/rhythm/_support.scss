@@ -1,79 +1,215 @@
+////
+/// @author Pedr Browne (originally by Eric M Suzanne)
+/// @group Support
+/// @access private
+////
 
-// Default font-size for all browsers
+/// Units supported as rythm units
+$rhythm-supported-rhythm-units: 'px' 'rem' 'em';
+
+/// Default font-size for all browsers (don't change)
 $rhythm-browser-default-font-size: 16px;
 
-// The leader is the amount of whitespace in a line.
-// It might be useful in your calculations.
-$rhythm-base-leading: convert-length($rhythm-base-line-height - $rhythm-base-font-size, $rhythm-unit, $rhythm-base-font-size);
-
-// The half-leader is the amount of whitespace above and below a line.
-// It might be useful in your calculations.
-$rhythm-base-half-leader: $rhythm-base-leading / 2;
-
-// @private Whether the rhythm output is in absolute units (px) or not (em, rem)
-$rhythm-relative-font-sizing: if($rhythm-unit == px, false, true);
-
+/// Error thrown when a value is invalid
 $rhythm-invalid-value-error: "Invalid Value Error";
+
+/// Error thrown when a unit is invalid
 $rhythm-invalid-unit-error: "Invalid Unit Error";
-$rhythm-last-error: null;
-$rhythm-under-test: false;
-$rhythm-error-thrown: false;
 
-@function rhythm-throw-error($error, $message) {
-  @if $rhythm-under-test {
-    @if not $rhythm-error-thrown {
-      $rhythm-error-thrown: true !global;
-      $rhythm-last-error: $error !global;
-    }
-  } @else {
-    @error "#{$error} #{$message}";
-  }
-  @return null;
-}
-
-@function rhythm-validate-config() {
-  // Validate units
-  @if unit($rhythm-base-font-size)   != 'px' {
+/// Check the given `font-size` and `line-height` to make sure they are valid values.
+///
+/// @param {String} $font-size
+///   The font size
+///
+/// @param {String} $line-height
+///   The line-height
+///
+/// @return {Bool}
+///   Were the values valid?
+///
+@function rhythm-validate($font-size, $line-height, $unit) {
+  @if unit($font-size) != 'px' {
     $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-base-font-size must resolve to a pixel unit.");
   }
-  @if unit($rhythm-base-line-height) != 'px' {
+
+  @if unit($line-height) != 'px' {
     $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-base-line-height must resolve to a pixel unit.");
   }
-  @if $rhythm-unit != 'px' and $rhythm-unit != 'em' and $rhythm-unit != 'rem' {
+  @if not is-supported-rhythm-unit($unit) {
     $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-unit must be `px`, `em` or `rem`.");
   }
-  @return null;
+  @return true;
 }
 
-// Calculate rhythm units.
-@function rhythm($lines: 1, $font-size: $rhythm-base-font-size, $offset: 0) {
-
-  @if type-of($lines) != number {
-    $lines: rhythm-parse-value-filter($lines);
-  }
-  $rhythm: convert-length($lines * $rhythm-base-line-height - $offset, $rhythm-unit, $font-size);
+/// Calculate a raw distance value based on number of lines and font-size
+///
+/// @param {Number} $lines (1)
+///  The number of lines of distance
+///
+/// @param {Number} $font-size ($rhythm-base-font-size)
+///  The font size to fit into the lines
+///
+/// @return {Number}
+///  The raw distance value
+///
+@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) {
+  $rhythm: convert-length($lines * $rhythm-base-line-height, $rhythm-unit, $font-size);
+  // Round pixel values
   @if unit($rhythm) == px {
     $rhythm: floor($rhythm);
   }
   @return $rhythm;
 }
 
-// Calculate the minimum multiple of rhythm units needed to contain the font-size.
+/// Calculate the minimum multiple of rhythm units needed to contain the font-size.
+///
+/// @param {String} $font-size
+///  The font size.
+///
+/// @returns {Number}
+///  The number of lines needed to house this font size.
+///
 @function rhythm-lines-for-font-size($font-size) {
   $lines: if($rhythm-round-to-nearest-half-line,
              ceil(2 * $font-size / $rhythm-base-line-height) / 2,
              ceil($font-size / $rhythm-base-line-height));
-  // If lines are cramped include some extra lead.
-
+  // If lines are cramped include some extra leading.
   @if ($lines * $rhythm-base-line-height - $font-size) < ($rhythm-min-line-leading * 2) {
     $lines: $lines + if($rhythm-round-to-nearest-half-line, 0.5, 1);
   }
   @return $lines;
 }
 
-// @private Outputs rhythm values. For rem units, outputs pixel fallbacks
-// by default.
-@mixin render-rhythm($property, $values) {
+/// Is the `$rhythm-unit` in absolute units (px) or not (em, rem)
+///
+/// @returns {Bool}
+///  Does rhythm use relative font-sizing?
+///
+@function rhythm-relative-font-sizing() {
+  @return $rhythm-unit != px;
+}
+
+/// Given a font-size and line-height, make necessary adjustments to these values so that when
+/// set on the `html` element the document will default to these values.
+///
+/// @param {String} $font-size
+///  The font size.
+///
+/// @param {String} $line-height
+///   The line-height
+///
+/// @return {List}
+///  The adjusted font size and line-height
+///
+@function rhythm-process-base-values($font-size, $line-height) {
+  // Throw error if invalid
+  $is-valid: rhythm-validate($font-size, $line-height, $rhythm-unit);
+  @if rhythm-relative-font-sizing() {
+    // Adjust font size if base font-size different from default browser (16px)
+    $font-size:  100% * ($font-size / $rhythm-browser-default-font-size);
+    // Use ems instead of rems to avoid Webkit bug. Usage of rems is uneffected as they will use the
+    // em value of the html element.
+    $line-height: rhythm-convert-value($line-height, em);
+  } @else {
+    // ( Use given font-size )
+    $line-height: round(line-height);
+  }
+  @return ($font-size $line-height);
+}
+
+/// Convert any CSS length or percentage value to any another.
+///
+/// @param {String} $length
+///   A css length or percentage value
+///
+/// @param {String} $to-unit
+///   String matching a css unit keyword, e.g. 'em', '%', etc.
+///
+/// @param {String} $from-context ($rhythm-base-font-size)
+///   When converting from relative units, the absolute length (in px) to
+///   which $length refers (e.g. for $lengths in em units, would normally be the
+///   font-size of the current element).
+///
+/// @param {String} $to-context ($from-context)
+///   For converting to relative units, the absolute length in px to which the
+///   output value will refer. Defaults to the same as $from-context, since it is
+///   rarely needed.
+///
+@function rhythm-convert-value(
+  $from-length,
+  $to-unit,
+  $from-context: $rhythm-base-font-size,
+  $to-context: $from-context
+  ) {
+
+  $from-unit: unit($from-length);
+
+  // Optimize for cases where `from` and `to` units are accidentally the same.
+  @if $from-unit == $to-unit { @return $from-length; }
+
+  // Context values must be in px so we can determine a conversion ratio for
+  // relative units.
+  @if unit($from-context) != 'px' {
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, "Parameter $from-context must resolve to a value in pixel units.");
+  }
+  @if unit($to-context) != 'px' {
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, "Parameter $to-context must resolve to a value in pixel units.");
+  }
+
+  // Convert input length to pixels
+  $px-length: $from-length;
+
+  @if $from-unit != 'px' {
+    // Convert relative units using the from-context parameter.
+    @if      $from-unit == 'em'  { $px-length: $from-length * $from-context / 1em }
+    @else if $from-unit == 'rem' { $px-length: $from-length * $rhythm-base-font-size / 1rem }
+    @else if $from-unit == '%'   { $px-length: $from-length * $from-context / 100% }
+    @else {
+      $error: rhythm-throw-error($rhythm-invalid-unit-error, "#{$from-unit} unit not supported");
+      @return $length;
+    }
+  }
+
+  // Convert length in pixels to the output unit
+  $output-length: $px-length;
+  @if $to-unit != 'px' {
+    // Relative units
+    @if      $to-unit == 'em'  { $output-length: $px-length * 1em / $to-context }
+    @else if $to-unit == 'rem' { $output-length: $px-length * 1rem / $rhythm-base-font-size }
+    @else if $to-unit == '%'   { $output-length: $px-length * 100% / $to-context }
+    @else {
+      $error: rhythm-throw-error($rhythm-invalid-unit-error, "#{$to-unit} unit not supported");
+    }
+  }
+
+  @return $output-length;
+}
+
+
+/// Check if the unit is supported as a value for $rhythm-unit.
+///
+/// @param {Number} $unit
+///  The unit.
+///
+/// @returns {Bool}
+///  Was the unit supported?
+///
+@function is-supported-rhythm-unit($unit) {
+  @return not not index($rhythm-supported-rhythm-units, $unit);
+}
+
+/// Render rhythm values.
+///
+/// @param {String) $property
+///  The property to render
+///
+/// @param {String} $values
+///  The propery values.
+///
+/// @output
+///  The rendered output.
+///
+@mixin rhythm-render-property($property, $values) {
   $output: ();
   @each $value in $values {
     @if unit($value) == px {
@@ -85,4 +221,36 @@ $rhythm-error-thrown: false;
     }
   }
   #{$property}: $output;
+}
+
+// SUPPORT (GLUE)
+// -------------------------------------------------------------------------------------------------
+
+// These items are used in test only
+$rhythm-last-error: null;
+$rhythm-under-test: false;
+$rhythm-error-thrown: false;
+
+/// By default, this function will throw a Sass error, but allows errors to be stopped during testing,
+/// with the error saved to `$box-last-error` instead so tests can check it was thrown.
+///
+/// @param {String} $error
+///  The name of the error
+///
+/// @param {String} $message
+///  The error message
+///
+/// @returns {Map}
+///  A map of offsets to be rendered as CSS properties
+///
+@function rhythm-throw-error($error, $message) {
+  @if $rhythm-under-test {
+    @if not $rhythm-error-thrown {
+      $rhythm-error-thrown: true !global;
+      $rhythm-last-error: $error !global;
+    }
+  } @else {
+    @error "#{$error} #{$message}";
+  }
+  @return null;
 }
