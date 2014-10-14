@@ -64,4 +64,20 @@
 /// @see https://github.com/chriseppstein/compass/pull/1352
 /// @see https://github.com/Compass/compass/issues/1487
 ///
+@mixin rhythm-context($new-base-font-size, $new-base-line-height) {
+
+   // Save the baseline context
+   $initial-font-size: $base-font-size;
+   $initial-line-height: $base-line-height;
+
+   // Apply the new context
+   $base-font-size: $new-base-font-size !global;
+   $base-line-height: $new-base-line-height !global;
+
+   // Render content passed to mixin
+   @content;
+
+   // Reapply the initial context
+   $base-font-size: $initial-font-size !global;
+   $base-line-height: $initial-line-height !global;
 }
