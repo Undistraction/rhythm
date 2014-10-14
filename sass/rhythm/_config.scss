@@ -1,0 +1,24 @@
+////
+/// @author Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).
+/// @group Config
+/// @access public
+////
+
+/// Default font size for all text in pixels
+$rhythm-base-font-size: 16px !default;
+
+/// Distance between text baselines in pixels.
+$rhythm-base-line-height: 21px !default;
+
+/// Ensure minimum leading above / below text. Number of lines will be increased if necessary.
+$rhythm-min-line-leading: 2px !default;
+
+/// The length unit in which to output rhythm values. Supported values: px, em, rem.
+/// Percent units can't be used since they make calculating padding and margins impractical,
+/// and percentage borders are not valid or supported in css.
+$rhythm-unit: rem !default;
+
+/// Allows the `adjust-font-size-to` mixin and the `rhythm-lines-for-font-size` function
+/// to round the line height to the nearest half line height instead of the
+/// nearest integral line height to avoid large spacing between lines.
+$rhythm-round-to-nearest-half-line: false !default;
