@@ -1,0 +1,13 @@
+@include describe("rhythm") {
+
+  @include it("should not throw an error") {
+    @include should(
+      expect(
+        rhythm(16px)
+      ),
+      to( equal(
+        true
+      ))
+    );
+  }
+}

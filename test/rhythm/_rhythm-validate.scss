@@ -1,0 +1,85 @@
+@include describe("rhythm-validate") {
+
+  @include describe("with valid values") {
+
+    @include describe("with font-size and line-height in px") {
+
+      @include it("should not throw an error") {
+        @include should(
+          expect(
+            rhythm-validate(12px, 18px, rem)
+          ),
+          to( equal(
+            true
+          ))
+        );
+      }
+    }
+
+    @each $unit in $rhythm-supported-rhythm-units {
+
+      @include describe("with unit in #{$unit}") {
+
+        @include it("should not throw an error") {
+          @include should(
+            expect(
+              rhythm-validate(12px, 18px, $unit)
+            ),
+            to( equal(
+              true
+            ))
+          );
+        }
+      }
+    }
+  }
+
+  // Errors
+  // -----------------------------------------------------------------------------------------------
+
+  @include describe("with invalid font-size") {
+    @include it("should throw a rhythm-invalid-unit-error") {
+      @include reset-errors();
+      $result: rhythm-validate(12%, 18px, rem);
+      @include should(
+        expect(
+          $rhythm-last-error
+        ),
+        to( equal(
+          $rhythm-invalid-unit-error
+        ))
+      );
+    }
+  }
+
+  @include describe("with invalid line-height") {
+    @include it("should throw a rhythm-invalid-unit-error") {
+      @include reset-errors();
+      $result: rhythm-validate(12px, 18%, rem);
+      @include should(
+        expect(
+          $rhythm-last-error
+        ),
+        to( equal(
+          $rhythm-invalid-unit-error
+        ))
+      );
+    }
+  }
+
+  @include describe("with invalid line-height") {
+    @include it("should throw a rhythm-invalid-unit-error") {
+      @include reset-errors();
+      $result: rhythm-validate(12px, 18px, vu);
+      @include should(
+        expect(
+          $rhythm-last-error
+        ),
+        to( equal(
+          $rhythm-invalid-unit-error
+        ))
+      );
+    }
+  }
+
+}

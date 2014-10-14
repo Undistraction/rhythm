@@ -1,0 +1,5 @@
+@mixin reset-errors() {
+  $rhythm-last-error: null !global;
+  $rhythm-under-test: true !global;
+  $rhythm-error-thrown: false !global;
+}
