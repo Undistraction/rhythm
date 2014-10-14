@@ -8,10 +8,12 @@
   "package": "./package.json",
 
   "groups": {
-    "undefined": "Rhythm"
+    "api": "API",
+    "config": "Config",
+    "support": "Support"
   },
 
   "theme": "default",
 
-  "basePath": "https://github.com/SassDoc/sassdoc"
+  "basePath": "https://github.com/Undistraction/box"
 }
