@@ -1,6 +1,6 @@
 {
   "name": "Rhythm",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Compass's vertical-rhythm module extracted and with box-model properties removed",
   "main": "Gruntfile.js",
   "directories": {
