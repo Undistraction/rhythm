@@ -14,7 +14,7 @@ Though you can use it on its own, this library is primarily built for use with i
 
 ## Docs
 
-You can view the docs online [here](http://undistraction.github.io/box/rhythm/) or locally in Chrome by running:
+You can view the docs online [here](http://undistraction.github.io/rhythm/docs/) or locally in Chrome by running:
 
 ```
 $ grunt docs
