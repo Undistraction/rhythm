@@ -1,7 +1,7 @@
 {
   "name": "Box",
-  "version": "0.0.7",
-  "description": "Compass's vertical-rhythm module extracted and with everything other than text-related properties removed",
+  "version": "0.0.1",
+  "description": "Compass's vertical-rhythm module extracted and with box-model properties removed",
   "main": "Gruntfile.js",
   "directories": {
     "doc": "docs"
@@ -17,7 +17,8 @@
     "grunt-contrib-sass": "^0.8.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-open": "^0.2.3",
-    "grunt-sassdoc": "^1.0.3"
+    "grunt-sassdoc": "^1.0.3",
+    "load-grunt-tasks": "^0.6.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
