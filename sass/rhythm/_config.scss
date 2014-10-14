@@ -10,15 +10,11 @@ $rhythm-base-font-size: 16px !default;
 /// Distance between text baselines in pixels.
 $rhythm-base-line-height: 21px !default;
 
+/// The unit in which to output rhythm values (px | rem | em)
+$rhythm-render-unit: rem !default;
+
+/// If you want to allow rythm to lock everything to half rather than whole lines, set this to true.
+$rhythm-round-to-nearest-half-line: false !default;
+
 /// Ensure minimum leading above / below text. Number of lines will be increased if necessary.
 $rhythm-min-line-leading: 2px !default;
-
-/// The length unit in which to output rhythm values. Supported values: px, em, rem.
-/// Percent units can't be used since they make calculating padding and margins impractical,
-/// and percentage borders are not valid or supported in css.
-$rhythm-unit: rem !default;
-
-/// Allows the `adjust-font-size-to` mixin and the `rhythm-lines-for-font-size` function
-/// to round the line height to the nearest half line height instead of the
-/// nearest integral line height to avoid large spacing between lines.
-$rhythm-round-to-nearest-half-line: false !default;
