@@ -46,24 +46,22 @@
   @if $lines == auto {
     $lines: rhythm-lines-for-font-size($font-size);
   }
-  @include rhythm-render-property(font-size, convert-length($font-size, $rhythm-unit, $from-context));
+  @include rhythm-render-property(font-size, convert-length($font-size, $rhythm-render-unit, $from-context));
   @include rhythm-render-leading($lines, $font-size);
 }
 
-/// Adjust a block to have different line height to maintain the rhythm.
-/// `$lines` specifies how many multiples of the baseline rhythm each line of this
-/// font should use up. It does not have to be an integer, but it defaults to the
-/// smallest integer that is large enough to fit the font.
+/// Use a different rhythm for a block by temporarily changing the configuration values
+/// '$rhythm-base-font-size' and '$rhythm-base-line-height'. While this will do nothing by itself,
+/// it can be combined with `rhythm-establish` to change the global rhythm temporarily, for example
+/// at a breakpoint.
 ///
-/// @param {String} $lines
-///  The number of lines each line of text should take up.
+/// @param {Number} $new-base-font-size
+///  The new `base-font-size` to use for the content of this mixin
 ///
-/// @param {String} $font-size ($rhythm-base-font-size)
-///  The font-size.
+/// @param {Number} $new-base-line-height
+///  The new `base-line-height` to use for the content of this mixin
 ///
-/// @output
-///  The line-height.
+/// @see https://github.com/chriseppstein/compass/pull/1352
+/// @see https://github.com/Compass/compass/issues/1487
 ///
-@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) {
-  @include rhythm-render-property(line-height, rhythm-value-for-lines($lines, $font-size));
 }
