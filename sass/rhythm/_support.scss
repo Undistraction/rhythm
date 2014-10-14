@@ -36,7 +36,7 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
     $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-base-line-height must resolve to a pixel unit.");
   }
   @if not is-supported-rhythm-unit($unit) {
-    $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-unit must be `px`, `em` or `rem`.");
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-render-unit must be `px`, `em` or `rem`.");
   }
   @return true;
 }
@@ -53,7 +53,7 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
 ///  The raw distance value
 ///
 @function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) {
-  $rhythm: convert-length($lines * $rhythm-base-line-height, $rhythm-unit, $font-size);
+  $rhythm: convert-length($lines * $rhythm-base-line-height, $rhythm-render-unit, $font-size);
   // Round pixel values
   @if unit($rhythm) == px {
     $rhythm: floor($rhythm);
@@ -80,13 +80,13 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
   @return $lines;
 }
 
-/// Is the `$rhythm-unit` in absolute units (px) or not (em, rem)
+/// Is the `$rhythm-render-unit` in absolute units (px) or not (em, rem)
 ///
 /// @returns {Bool}
 ///  Does rhythm use relative font-sizing?
 ///
 @function rhythm-relative-font-sizing() {
-  @return $rhythm-unit != px;
+  @return $rhythm-render-unit != px;
 }
 
 /// Given a font-size and line-height, make necessary adjustments to these values so that when
@@ -103,7 +103,7 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
 ///
 @function rhythm-process-base-values($font-size, $line-height) {
   // Throw error if invalid
-  $is-valid: rhythm-validate($font-size, $line-height, $rhythm-unit);
+  $is-valid: rhythm-validate($font-size, $line-height, $rhythm-render-unit);
   @if rhythm-relative-font-sizing() {
     // Adjust font size if base font-size different from default browser (16px)
     $font-size:  100% * ($font-size / $rhythm-browser-default-font-size);
@@ -186,7 +186,7 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
 }
 
 
-/// Check if the unit is supported as a value for $rhythm-unit.
+/// Check if the unit is supported as a value for $rhythm-render-unit.
 ///
 /// @param {Number} $unit
 ///  The unit.
@@ -196,6 +196,24 @@ $rhythm-invalid-unit-error: "Invalid Unit Error";
 ///
 @function is-supported-rhythm-unit($unit) {
   @return not not index($rhythm-supported-rhythm-units, $unit);
+}
+
+/// Adjust a block to have different line height to maintain the rhythm.
+/// `$lines` specifies how many multiples of the baseline rhythm each line of this
+/// font should use up. It does not have to be an integer, but it defaults to the
+/// smallest integer that is large enough to fit the font.
+///
+/// @param {String} $lines
+///  The number of lines each line of text should take up.
+///
+/// @param {String} $font-size ($rhythm-base-font-size)
+///  The font-size.
+///
+/// @output
+///  The line-height.
+///
+@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) {
+  @include rhythm-render-property(line-height, rhythm-value-for-lines($lines, $font-size));
 }
 
 /// Render rhythm values.
