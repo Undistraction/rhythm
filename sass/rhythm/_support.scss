@@ -272,3 +272,14 @@ $rhythm-error-thrown: false;
   }
   @return null;
 }
+
+/// Overridable hook to handle unrecognised values. By default it will throw an error.
+///
+/// @param {String} $value
+///  An unrecognised value
+///
+/// @throws $pos-unsupported-value-error
+///
+@function pos-parse-value-filter($value) {
+  @return pos-throw-error($pos-invalid-value-error, "Invalid value #{$value}");
+}
