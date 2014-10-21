@@ -20,6 +20,8 @@
       font-size: nth($processed-values, 1);
       line-height: nth($processed-values, 2);
   }
+
+  $rhythm-was-established: true !global;
 }
 
 /// Adjust a block to have a different font size and line height to maintain the

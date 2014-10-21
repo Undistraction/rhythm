@@ -16,6 +16,9 @@ $rhythm-invalid-value-error: "Invalid Value Error";
 /// Error thrown when a unit is invalid
 $rhythm-invalid-unit-error: "Invalid Unit Error";
 
+/// Has rhythm been established? This flag is set when `rhythm-establish` is called.
+$rhythm-was-established: false;
+
 /// Check the given `font-size` and `line-height` to make sure they are valid values.
 ///
 /// @param {String} $font-size
