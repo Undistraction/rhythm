@@ -1,4 +1,4 @@
-/*! rhythm v0.1.4 – 14.10.2014 */
+/*! rhythm v0.1.5 – 21.10.2014 */
 
 ////
 /// @author Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).
@@ -7,18 +7,33 @@
 ////
 
 /// Default font size for all text in pixels
+///
+/// @type Number
+///
 $rhythm-base-font-size: 16px !default;
 
 /// Distance between text baselines in pixels.
+///
+/// @type Number
+///
 $rhythm-base-line-height: 21px !default;
 
 /// The unit in which to output rhythm values (px | rem | em)
+///
+/// @type String
+///
 $rhythm-render-unit: rem !default;
 
 /// If you want to allow rythm to lock everything to half rather than whole lines, set this to true.
+///
+/// @type Bool
+///
 $rhythm-round-to-nearest-half-line: false !default;
 
 /// Ensure minimum leading above / below text. Number of lines will be increased if necessary.
+///
+/// @type Number
+///
 $rhythm-min-line-leading: 2px !default;
 
 ////
@@ -28,16 +43,34 @@ $rhythm-min-line-leading: 2px !default;
 ////
 
 /// Units supported as rythm units
+///
+/// @type String
+///
 $rhythm-supported-rhythm-units: 'px' 'rem' 'em';
 
 /// Default font-size for all browsers (don't change)
+///
+/// @type Number
+///
 $rhythm-browser-default-font-size: 16px;
 
 /// Error thrown when a value is invalid
-$rhythm-invalid-value-error: "Invalid Value Error";
+///
+/// @type String
+///
+$rhythm-invalid-value-error: "Rhythm.Invalid Value Error";
 
 /// Error thrown when a unit is invalid
-$rhythm-invalid-unit-error: "Invalid Unit Error";
+///
+/// @type String
+///
+$rhythm-invalid-unit-error: "Rhythm.Invalid Unit Error";
+
+/// Has rhythm been established? This flag is set when `rhythm-establish` is called.
+///
+/// @type Bool
+///
+$rhythm-was-established: false;
 
 /// Check the given `font-size` and `line-height` to make sure they are valid values.
 ///
@@ -296,6 +329,18 @@ $rhythm-error-thrown: false;
   @return null;
 }
 
+/// Overridable hook to handle unrecognised values. By default it will throw an error.
+///
+/// @param {String} $value
+///  An unrecognised value
+///
+/// @throws $pos-unsupported-value-error
+///
+@function pos-parse-value-filter($value) {
+  @return pos-throw-error($pos-invalid-value-error, "Invalid value #{$value}");
+}
+
+
 ////
 /// @author Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).
 /// @group API
@@ -318,6 +363,8 @@ $rhythm-error-thrown: false;
       font-size: nth($processed-values, 1);
       line-height: nth($processed-values, 2);
   }
+
+  $rhythm-was-established: true !global;
 }
 
 /// Adjust a block to have a different font size and line height to maintain the
