@@ -5,18 +5,33 @@
 ////
 
 /// Units supported as rythm units
+///
+/// @type String
+///
 $rhythm-supported-rhythm-units: 'px' 'rem' 'em';
 
 /// Default font-size for all browsers (don't change)
+///
+/// @type Number
+///
 $rhythm-browser-default-font-size: 16px;
 
 /// Error thrown when a value is invalid
+///
+/// @type String
+///
 $rhythm-invalid-value-error: "Invalid Value Error";
 
 /// Error thrown when a unit is invalid
+///
+/// @type String
+///
 $rhythm-invalid-unit-error: "Invalid Unit Error";
 
 /// Has rhythm been established? This flag is set when `rhythm-establish` is called.
+///
+/// @type Bool
+///
 $rhythm-was-established: false;
 
 /// Check the given `font-size` and `line-height` to make sure they are valid values.

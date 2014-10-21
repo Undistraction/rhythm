@@ -5,16 +5,31 @@
 ////
 
 /// Default font size for all text in pixels
+///
+/// @type Number
+///
 $rhythm-base-font-size: 16px !default;
 
 /// Distance between text baselines in pixels.
+///
+/// @type Number
+///
 $rhythm-base-line-height: 21px !default;
 
 /// The unit in which to output rhythm values (px | rem | em)
+///
+/// @type String
+///
 $rhythm-render-unit: rem !default;
 
 /// If you want to allow rythm to lock everything to half rather than whole lines, set this to true.
+///
+/// @type Bool
+///
 $rhythm-round-to-nearest-half-line: false !default;
 
 /// Ensure minimum leading above / below text. Number of lines will be increased if necessary.
+///
+/// @type Number
+///
 $rhythm-min-line-leading: 2px !default;
