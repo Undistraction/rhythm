@@ -1,0 +1,187 @@
+@include describe("rhythm-lines-for-font-size") {
+
+  // With minimum leading
+  // -----------------------------------------------------------------------------------------------
+
+  @include describe("with minimum leading") {
+
+    @include describe("when the combination is less than the base-line-height") {
+
+      @include it("should return a single line") {
+        @include should(
+          expect(
+            rhythm-lines-for-font-size(16px)
+          ),
+          to( equal(
+            1
+          ))
+        );
+      }
+    }
+
+    @include describe("when the combination is the same as the base-line-height") {
+
+      @include it("should return a single line") {
+        @include should(
+          expect(
+            rhythm-lines-for-font-size(17px) // Identical to line-height
+          ),
+          to( equal(
+            1
+          ))
+        );
+      }
+    }
+
+    @include describe("when the combination is slighly greater than the base-line-height") {
+
+      @include it("should return two lines") {
+        @include should(
+          expect(
+            rhythm-lines-for-font-size(18px)
+          ),
+          to( equal(
+            2
+          ))
+        );
+      }
+    }
+  }
+
+  // With no minimum leading
+  // -----------------------------------------------------------------------------------------------
+
+  // Save default
+  $saved-rhythm-min-line-leading: $rhythm-min-line-leading;
+
+  @include describe("with no minimum leading") {
+
+    $rhythm-min-line-leading: 0 !global;
+
+    @include describe("when the font-size is less than the base-line-height") {
+
+      @include it("should return a single line") {
+        @include should(
+          expect(
+            rhythm-lines-for-font-size(16px)
+          ),
+          to( equal(
+            1
+          ))
+        );
+      }
+    }
+
+    @include describe("when the font-size is the same as the base-line-height") {
+
+      @include it("should return a single line") {
+        @include should(
+          expect(
+            rhythm-lines-for-font-size(21px) // Identical to line-height
+          ),
+          to( equal(
+            1
+          ))
+        );
+      }
+    }
+
+    @include describe("when the font-size is slighly greater than the base-line-height") {
+
+      @include it("should return two lines") {
+        @include should(
+          expect(
+            rhythm-lines-for-font-size(22px)
+          ),
+          to( equal(
+            2
+          ))
+        );
+      }
+    }
+
+    @include describe("when the font-size is a multiple of the base-line-height") {
+
+      @include it("should return the multiple") {
+        @include should(
+          expect(
+            rhythm-lines-for-font-size(63px)
+          ),
+          to( equal(
+            3
+          ))
+        );
+      }
+    }
+  }
+
+  // Reset to default
+  $rhythm-min-line-leading: $saved-rhythm-min-line-leading !global;
+
+  // Rounding to half-lines
+  // -----------------------------------------------------------------------------------------------
+
+  $rhythm-round-to-nearest-half-line: true !global;
+
+  @include describe("with rhythm-round-to-nearest-half-line set to true") {
+
+    @include describe("when the combination is less than the base-line-height") {
+
+      @include it("should return a single line") {
+        @include should(
+          expect(
+            rhythm-lines-for-font-size(16px) // + 4px minimum leading is less than base line-height
+          ),
+          to( equal(
+            1
+          ))
+        );
+      }
+    }
+
+    @include describe("when the combination is the same as the base-line-height") {
+
+      @include it("should return a single line") {
+        @include should(
+          expect(
+            rhythm-lines-for-font-size(17px) // + 4px minimum leading is identical to base line-height
+          ),
+          to( equal(
+            1
+          ))
+        );
+      }
+    }
+
+    @include describe("when the font-size is slighly greater than the base-line-height") {
+
+      @include it("should return two lines") {
+        @include should(
+          expect(
+            rhythm-lines-for-font-size(18px)
+          ),
+          to( equal(
+            1.5
+          ))
+        );
+      }
+    }
+
+    @include describe("when the combination fits into a half-multiple") {
+
+      @include it("should return the half multiple") {
+        @include should(
+          expect(
+            rhythm-lines-for-font-size(45px)
+          ),
+          to( equal(
+            2.5
+          ))
+        );
+      }
+    }
+
+    // Reset default
+    $rhythm-round-to-nearest-half-line: false !global;
+  }
+}

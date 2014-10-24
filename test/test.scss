@@ -5,6 +5,8 @@
 @include runner-start;
 
 @import "rhythm/rhythm-validate.scss";
+@import "rhythm/rhythm-lines-for-font-size";
 @import "rhythm/rhythm-convert-value.scss";
+@import "rhythm/rhythm-value-for-lines.scss";
 
 @include runner-end;

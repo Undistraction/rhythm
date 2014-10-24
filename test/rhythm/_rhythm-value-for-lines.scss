@@ -1,0 +1,30 @@
+@include describe("rhythm-value-for-lines") {
+
+  @include describe("with no params") {
+
+    @include it("should return the base line-height") {
+      @include should(
+        expect(
+          rhythm-value-for-lines()
+        ),
+        to( equal(
+          1.3125rem // 21px
+        ))
+      );
+    }
+  }
+
+  @include describe("with the lines parameter") {
+
+    @include it("should return the lines multiplied by the base line-height") {
+      @include should(
+        expect(
+          rhythm-value-for-lines(5)
+        ),
+        to( equal(
+          6.5625rem // 21px * 5
+        ))
+      );
+    }
+  }
+}
