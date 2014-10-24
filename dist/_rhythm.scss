@@ -1,4 +1,4 @@
-/*! rhythm v0.1.5 – 21.10.2014 */
+/*! rhythm v0.1.6 – 24.10.2014 */
 
 ////
 /// @author Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).
@@ -201,20 +201,22 @@ $rhythm-was-established: false;
   $from-unit: unit($from-length);
 
   // Optimize for cases where `from` and `to` units are accidentally the same.
-  @if $from-unit == $to-unit { @return $from-length; }
+  @if $from-unit == $to-unit {
+    @return $from-length;
+  }
 
   // Context values must be in px so we can determine a conversion ratio for
   // relative units.
   @if unit($from-context) != 'px' {
-    $error: rhythm-throw-error($rhythm-invalid-unit-error, "Parameter $from-context must resolve to a value in pixel units.");
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, "Parameter `$from-context` must resolve to a value in pixel units.");
   }
   @if unit($to-context) != 'px' {
-    $error: rhythm-throw-error($rhythm-invalid-unit-error, "Parameter $to-context must resolve to a value in pixel units.");
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, "Parameter `$to-context` must resolve to a value in pixel units.");
   }
 
   // Convert input length to pixels
-  $px-length: $from-length;
 
+  $px-length: $from-length;
   @if $from-unit != 'px' {
     // Convert relative units using the from-context parameter.
     @if      $from-unit == 'em'  { $px-length: $from-length * $from-context / 1em }
@@ -227,6 +229,7 @@ $rhythm-was-established: false;
   }
 
   // Convert length in pixels to the output unit
+
   $output-length: $px-length;
   @if $to-unit != 'px' {
     // Relative units
@@ -240,7 +243,6 @@ $rhythm-was-established: false;
 
   @return $output-length;
 }
-
 
 /// Check if the unit is supported as a value for $rhythm-render-unit.
 ///

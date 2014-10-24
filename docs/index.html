@@ -8,7 +8,7 @@
   
   <meta charset="utf-8" />
 
-<title>SassDoc - v0.1.5</title>
+<title>SassDoc - v0.1.6</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
@@ -26,7 +26,7 @@
   <div class="sidebar__header">
   <h1 class="sidebar__title">
     
-      <a href="https://github.com/Undistraction/Rhythm">SassDoc - v0.1.5</a>
+      <a href="https://github.com/Undistraction/Rhythm">SassDoc - v0.1.6</a>
     
   </h1>
 </div>
@@ -1417,20 +1417,22 @@ set on the <code>html</code> element the document will default to these values.<
   $from-unit: unit($from-length);
 
   // Optimize for cases where `from` and `to` units are accidentally the same.
-  @if $from-unit == $to-unit { @return $from-length; }
+  @if $from-unit == $to-unit {
+    @return $from-length;
+  }
 
   // Context values must be in px so we can determine a conversion ratio for
   // relative units.
   @if unit($from-context) != &#39;px&#39; {
-    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;Parameter $from-context must resolve to a value in pixel units.&quot;);
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;Parameter `$from-context` must resolve to a value in pixel units.&quot;);
   }
   @if unit($to-context) != &#39;px&#39; {
-    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;Parameter $to-context must resolve to a value in pixel units.&quot;);
+    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;Parameter `$to-context` must resolve to a value in pixel units.&quot;);
   }
 
   // Convert input length to pixels
-  $px-length: $from-length;
 
+  $px-length: $from-length;
   @if $from-unit != &#39;px&#39; {
     // Convert relative units using the from-context parameter.
     @if      $from-unit == &#39;em&#39;  { $px-length: $from-length * $from-context / 1em }
@@ -1443,6 +1445,7 @@ set on the <code>html</code> element the document will default to these values.<
   }
 
   // Convert length in pixels to the output unit
+
   $output-length: $px-length;
   @if $to-unit != &#39;px&#39; {
     // Relative units
@@ -1459,7 +1462,7 @@ set on the <code>html</code> element the document will default to these values.<
     data-collapsed="@function rhythm-convert-value($length, $to-unit, $from-context: $rhythm-base-font-size, $to-context: $from-context) { ... }"><code>@function rhythm-convert-value($length, $to-unit, $from-context: $rhythm-base-font-size, $to-context: $from-context) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L156-L204" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L156-L207" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1675,7 +1678,7 @@ set on the <code>html</code> element the document will default to these values.<
     data-collapsed="@function is-supported-rhythm-unit($unit) { ... }"><code>@function is-supported-rhythm-unit($unit) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L215-L217" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L217-L219" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1866,7 +1869,7 @@ set on the <code>html</code> element the document will default to these values.<
     data-collapsed="@function rhythm-throw-error($error, $message) { ... }"><code>@function rhythm-throw-error($error, $message) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L282-L292" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L284-L294" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -2056,7 +2059,7 @@ with the error saved to <code>$box-last-error</code> instead so tests can check 
     data-collapsed="@function pos-parse-value-filter($value) { ... }"><code>@function pos-parse-value-filter($value) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L301-L303" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L303-L305" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -2255,7 +2258,7 @@ with the error saved to <code>$box-last-error</code> instead so tests can check 
     data-collapsed="@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }"><code>@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L233-L235" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L235-L237" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -2458,7 +2461,7 @@ smallest integer that is large enough to fit the font.</p>
     data-collapsed="@mixin rhythm-render-property(${String), $values) { ... }"><code>@mixin rhythm-render-property(${String), $values) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L248-L260" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L250-L262" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -4428,7 +4431,7 @@ at a breakpoint.</p>
           
 
           <!-- Version -->
-          <span class="project-info__version"> - v0.1.5</span>
+          <span class="project-info__version"> - v0.1.6</span>
 
           <!-- License -->
           
