@@ -8,7 +8,7 @@
   
   <meta charset="utf-8" />
 
-<title>SassDoc - v0.1.6</title>
+<title>SassDoc - v0.1.7</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
@@ -26,7 +26,7 @@
   <div class="sidebar__header">
   <h1 class="sidebar__title">
     
-      <a href="https://github.com/Undistraction/Rhythm">SassDoc - v0.1.6</a>
+      <a href="https://github.com/Undistraction/Rhythm">SassDoc - v0.1.7</a>
     
   </h1>
 </div>
@@ -126,8 +126,8 @@
             
           
             
-            <li class="sidebar__item  sassdoc__item" data-name="pos-parse-value-filter" data-type="function">
-              <a href="#function-pos-parse-value-filter">pos-parse-value-filter
+            <li class="sidebar__item  sassdoc__item" data-name="rhythm-parse-value-filter" data-type="function">
+              <a href="#function-rhythm-parse-value-filter">rhythm-parse-value-filter
               <span class="sidebar__annotation  sidebar__annotation--private">private</span>
               
               </a>
@@ -445,8 +445,12 @@
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
     data-expanded="@function rhythm-validate($font-size, $line-height) { 
-  @if unit($font-size) != &#39;px&#39; {
-    $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;$rhythm-base-font-size must resolve to a pixel unit.&quot;);
+  @if (type-of($font-size) == number) {
+    @if unit($font-size) != &#39;px&#39; {
+      $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;$rhythm-base-font-size must resolve to a pixel unit.&quot;);
+    }
+  } @else {
+    $font-size: rhythm-parse-value-filter($font-size);
   }
 
   @if unit($line-height) != &#39;px&#39; {
@@ -460,7 +464,7 @@
     data-collapsed="@function rhythm-validate($font-size, $line-height) { ... }"><code>@function rhythm-validate($font-size, $line-height) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L48-L60" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L48-L64" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -668,7 +672,7 @@
     data-collapsed="@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) { ... }"><code>@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L73-L80" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L77-L84" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -864,7 +868,7 @@
     data-collapsed="@function rhythm-lines-for-font-size($font-size) { ... }"><code>@function rhythm-lines-for-font-size($font-size) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L90-L99" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L94-L103" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1027,7 +1031,7 @@
     data-collapsed="@function rhythm-relative-font-sizing() { ... }"><code>@function rhythm-relative-font-sizing() { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L106-L108" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L110-L112" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1194,7 +1198,7 @@
     data-collapsed="@function rhythm-process-base-values($font-size, $line-height) { ... }"><code>@function rhythm-process-base-values($font-size, $line-height) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L122-L136" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L126-L140" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1462,7 +1466,7 @@ set on the <code>html</code> element the document will default to these values.<
     data-collapsed="@function rhythm-convert-value($length, $to-unit, $from-context: $rhythm-base-font-size, $to-context: $from-context) { ... }"><code>@function rhythm-convert-value($length, $to-unit, $from-context: $rhythm-base-font-size, $to-context: $from-context) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L156-L207" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L160-L211" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1678,7 +1682,7 @@ set on the <code>html</code> element the document will default to these values.<
     data-collapsed="@function is-supported-rhythm-unit($unit) { ... }"><code>@function is-supported-rhythm-unit($unit) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L217-L219" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L221-L223" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1869,7 +1873,7 @@ set on the <code>html</code> element the document will default to these values.<
     data-collapsed="@function rhythm-throw-error($error, $message) { ... }"><code>@function rhythm-throw-error($error, $message) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L284-L294" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L288-L298" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -2015,14 +2019,14 @@ with the error saved to <code>$box-last-error</code> instead so tests can check 
 
 </section>
               
-                <section class="main__item  item" id="function-pos-parse-value-filter">
+                <section class="main__item  item" id="function-rhythm-parse-value-filter">
 
 <h3 class="item__heading">
   
     <span class="item__access">[private]</span>
   
 
-  <a class="item__name" href="#function-pos-parse-value-filter">pos-parse-value-filter</a>
+  <a class="item__name" href="#function-rhythm-parse-value-filter">rhythm-parse-value-filter</a>
 
   
 
@@ -2053,13 +2057,13 @@ with the error saved to <code>$box-last-error</code> instead so tests can check 
 <div class="relative  clear  code--collapsed">
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
-    data-expanded="@function pos-parse-value-filter($value) { 
-  @return pos-throw-error($pos-invalid-value-error, &quot;Invalid value #{$value}&quot;);
+    data-expanded="@function rhythm-parse-value-filter($value) { 
+  @return rhythm-throw-error($rhythm-invalid-value-error, &quot;Invalid value #{$value}&quot;);
  }"
-    data-collapsed="@function pos-parse-value-filter($value) { ... }"><code>@function pos-parse-value-filter($value) { ... }</code></pre>
+    data-collapsed="@function rhythm-parse-value-filter($value) { ... }"><code>@function rhythm-parse-value-filter($value) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L303-L305" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L307-L309" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -2130,7 +2134,7 @@ with the error saved to <code>$box-last-error</code> instead so tests can check 
 
   <ul class="list-unstyled">
     
-      <li><p>$pos-unsupported-value-error</p>
+      <li><p>$rhythm-unsupported-value-error</p>
 </li>
     
   </ul>
@@ -2258,7 +2262,7 @@ with the error saved to <code>$box-last-error</code> instead so tests can check 
     data-collapsed="@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }"><code>@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L235-L237" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L239-L241" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -2461,7 +2465,7 @@ smallest integer that is large enough to fit the font.</p>
     data-collapsed="@mixin rhythm-render-property(${String), $values) { ... }"><code>@mixin rhythm-render-property(${String), $values) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L250-L262" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L254-L266" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -4431,7 +4435,7 @@ at a breakpoint.</p>
           
 
           <!-- Version -->
-          <span class="project-info__version"> - v0.1.6</span>
+          <span class="project-info__version"> - v0.1.7</span>
 
           <!-- License -->
           
