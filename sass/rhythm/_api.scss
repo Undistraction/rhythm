@@ -43,6 +43,8 @@
 ///  Output the calculated `font-size` and `line-height`.
 ///
 @mixin rhythm($font-size, $lines: auto, $from-context: $rhythm-base-font-size) {
+
+  $font-size: validate-font-size($font-size);
   $font-size: rhythm-convert-value($font-size, px, $from-context);
 
   @if $lines == auto {
