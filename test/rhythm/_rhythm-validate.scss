@@ -1,5 +1,50 @@
 @include describe("rhythm-validate") {
 
+  @include describe("with invalid fontsize") {
+    @include it("should throw a rhythm-invalid-value-error") {
+      @include reset-errors();
+      $result: rhythm-validate("xxxxx", 18px, rem);
+      @include should(
+        expect(
+          $rhythm-last-error
+        ),
+        to( equal(
+          $rhythm-invalid-value-error
+        ))
+      );
+    }
+  }
+
+  @include describe("with invalid unit of fontsize") {
+    @include it("should throw a rhythm-invalid-unit-error") {
+      @include reset-errors();
+      $result: rhythm-validate(1.4rem, 18px, rem);
+      @include should(
+        expect(
+          $rhythm-last-error
+        ),
+        to( equal(
+          $rhythm-invalid-unit-error
+        ))
+      );
+    }
+  }
+
+  @include describe("with invalid unit of lineheight") {
+    @include it("should throw a rhythm-invalid-unit-error") {
+      @include reset-errors();
+      $result: rhythm-validate(18px, 1.4rem, rem);
+      @include should(
+        expect(
+          $rhythm-last-error
+        ),
+        to( equal(
+          $rhythm-invalid-unit-error
+        ))
+      );
+    }
+  }
+
   @include describe("with valid values") {
 
     @include describe("with font-size and line-height in px") {

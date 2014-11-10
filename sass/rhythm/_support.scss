@@ -46,8 +46,12 @@ $rhythm-was-established: false;
 ///   Were the values valid?
 ///
 @function rhythm-validate($font-size, $line-height, $unit) {
-  @if unit($font-size) != 'px' {
-    $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-base-font-size must resolve to a pixel unit.");
+  @if (type-of($font-size) == number) {
+    @if unit($font-size) != 'px' {
+      $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-base-font-size must resolve to a pixel unit.");
+    }
+  } @else {
+    $font-size: rhythm-parse-value-filter($font-size);
   }
 
   @if unit($line-height) != 'px' {
@@ -298,8 +302,8 @@ $rhythm-error-thrown: false;
 /// @param {String} $value
 ///  An unrecognised value
 ///
-/// @throws $pos-unsupported-value-error
+/// @throws $rhythm-unsupported-value-error
 ///
-@function pos-parse-value-filter($value) {
-  @return pos-throw-error($pos-invalid-value-error, "Invalid value #{$value}");
+@function rhythm-parse-value-filter($value) {
+  @return rhythm-throw-error($rhythm-invalid-value-error, "Invalid value #{$value}");
 }
