@@ -8,7 +8,7 @@
   
   <meta charset="utf-8" />
 
-<title>SassDoc - v0.1.9</title>
+<title>SassDoc - v0.1.10</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
@@ -26,7 +26,7 @@
   <div class="sidebar__header">
   <h1 class="sidebar__title">
     
-      <a href="https://github.com/Undistraction/Rhythm">SassDoc - v0.1.9</a>
+      <a href="https://github.com/Undistraction/Rhythm">SassDoc - v0.1.10</a>
     
   </h1>
 </div>
@@ -56,6 +56,15 @@
             <ul class="list-unstyled">
             <li class="sidebar__item  sassdoc__item" data-name="rhythm-validate" data-type="function">
               <a href="#function-rhythm-validate">rhythm-validate
+              <span class="sidebar__annotation  sidebar__annotation--private">private</span>
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="validate-font-size" data-type="function">
+              <a href="#function-validate-font-size">validate-font-size
               <span class="sidebar__annotation  sidebar__annotation--private">private</span>
               
               </a>
@@ -445,13 +454,7 @@
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
     data-expanded="@function rhythm-validate($font-size, $line-height) { 
-  @if (type-of($font-size) == number) {
-    @if unit($font-size) != &#39;px&#39; {
-      $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;$rhythm-base-font-size must resolve to a pixel unit.&quot;);
-    }
-  } @else {
-    $font-size: rhythm-parse-value-filter($font-size);
-  }
+  $font-size: validate-font-size($font-size);
 
   @if unit($line-height) != &#39;px&#39; {
     $error: rhythm-throw-error($rhythm-invalid-unit-error, &quot;$rhythm-base-line-height must resolve to a pixel unit.&quot;);
@@ -464,7 +467,7 @@
     data-collapsed="@function rhythm-validate($font-size, $line-height) { ... }"><code>@function rhythm-validate($font-size, $line-height) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L48-L64" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L48-L58" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -609,6 +612,196 @@
 
 </section>
               
+                <section class="main__item  item" id="function-validate-font-size">
+
+<h3 class="item__heading">
+  
+    <span class="item__access">[private]</span>
+  
+
+  <a class="item__name" href="#function-validate-font-size">validate-font-size</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function validate-font-size($font-size) { 
+  @if (type-of($value) == number) {
+    @if unit($value) != &#39;px&#39; {
+      @return rhythm-throw-error($rhythm-invalid-unit-error, &quot;$rhythm-base-font-size must resolve to a pixel unit byt was #{$value}&quot;);
+    } @else {
+      @return $value;
+    }
+  } @else {
+    @return rhythm-parse-value-filter($value);
+  }
+ }"
+    data-collapsed="@function validate-font-size($font-size) { ... }"><code>@function validate-font-size($font-size) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L70-L80" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Validates that the font-size in a united pixel value, defering to rhythm-parse-value-filter if
+not a number.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$font-size</code></th>
+          <td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Returns</h3>
+
+  <p class="sassdoc__item-description"><p>The original font-size if valid or the filtered font size.</p>
+
+  
+    Number
+  
+  </p>
+
+
+  
+    
+    
+
+  
+    
+    
+  <h3 class="item__sub-heading">Throws</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>$rhythm-invalid-unit-error</p>
+</li>
+    
+  </ul>
+
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
                 <section class="main__item  item" id="function-rhythm-value-for-lines">
 
 <h3 class="item__heading">
@@ -672,7 +865,7 @@
     data-collapsed="@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) { ... }"><code>@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L77-L84" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L93-L100" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -868,7 +1061,7 @@
     data-collapsed="@function rhythm-lines-for-font-size($font-size) { ... }"><code>@function rhythm-lines-for-font-size($font-size) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L94-L103" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L110-L119" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1031,7 +1224,7 @@
     data-collapsed="@function rhythm-relative-font-sizing() { ... }"><code>@function rhythm-relative-font-sizing() { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L110-L112" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L126-L128" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1198,7 +1391,7 @@
     data-collapsed="@function rhythm-process-base-values($font-size, $line-height) { ... }"><code>@function rhythm-process-base-values($font-size, $line-height) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L126-L140" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L142-L156" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1466,7 +1659,7 @@ set on the <code>html</code> element the document will default to these values.<
     data-collapsed="@function rhythm-convert-value($length, $to-unit, $from-context: $rhythm-base-font-size, $to-context: $from-context) { ... }"><code>@function rhythm-convert-value($length, $to-unit, $from-context: $rhythm-base-font-size, $to-context: $from-context) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L160-L211" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L176-L227" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1682,7 +1875,7 @@ set on the <code>html</code> element the document will default to these values.<
     data-collapsed="@function is-supported-rhythm-unit($unit) { ... }"><code>@function is-supported-rhythm-unit($unit) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L221-L223" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L237-L239" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -1873,7 +2066,7 @@ set on the <code>html</code> element the document will default to these values.<
     data-collapsed="@function rhythm-throw-error($error, $message) { ... }"><code>@function rhythm-throw-error($error, $message) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L288-L298" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L304-L314" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -2063,7 +2256,7 @@ with the error saved to <code>$box-last-error</code> instead so tests can check 
     data-collapsed="@function rhythm-parse-value-filter($value) { ... }"><code>@function rhythm-parse-value-filter($value) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L307-L309" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L323-L325" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -2262,7 +2455,7 @@ with the error saved to <code>$box-last-error</code> instead so tests can check 
     data-collapsed="@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }"><code>@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L239-L241" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L255-L257" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -2465,7 +2658,7 @@ smallest integer that is large enough to fit the font.</p>
     data-collapsed="@mixin rhythm-render-property(${String), $values) { ... }"><code>@mixin rhythm-render-property(${String), $values) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L254-L266" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_support.scss#L270-L282" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -3447,6 +3640,8 @@ smallest integer that is large enough to fit the font.</p>
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
     data-expanded="@mixin rhythm($font-size, $lines, $from-context) { 
+
+  $font-size: validate-font-size($font-size);
   $font-size: rhythm-convert-value($font-size, px, $from-context);
 
   @if $lines == auto {
@@ -3458,7 +3653,7 @@ smallest integer that is large enough to fit the font.</p>
     data-collapsed="@mixin rhythm($font-size, $lines, $from-context) { ... }"><code>@mixin rhythm($font-size, $lines, $from-context) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_api.scss#L45-L53" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_api.scss#L45-L55" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -3680,7 +3875,7 @@ Use <code>$from-context</code> to adjust from a font-size other than the base fo
     data-collapsed="@mixin rhythm-context($new-base-font-size, $new-base-line-height) { ... }"><code>@mixin rhythm-context($new-base-font-size, $new-base-line-height) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/box/rhythm/_api.scss#L69-L85" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/box/rhythm/_api.scss#L71-L87" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -4435,7 +4630,7 @@ at a breakpoint.</p>
           
 
           <!-- Version -->
-          <span class="project-info__version"> - v0.1.9</span>
+          <span class="project-info__version"> - v0.1.10</span>
 
           <!-- License -->
           

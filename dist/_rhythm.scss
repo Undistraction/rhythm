@@ -1,4 +1,4 @@
-/*! rhythm v0.1.9 – 10.11.2014 */
+/*! rhythm v0.1.10 – 10.11.2014 */
 
 ////
 /// @author Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).
@@ -84,13 +84,7 @@ $rhythm-was-established: false;
 ///   Were the values valid?
 ///
 @function rhythm-validate($font-size, $line-height, $unit) {
-  @if (type-of($font-size) == number) {
-    @if unit($font-size) != 'px' {
-      $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-base-font-size must resolve to a pixel unit.");
-    }
-  } @else {
-    $font-size: rhythm-parse-value-filter($font-size);
-  }
+  $font-size: validate-font-size($font-size);
 
   @if unit($line-height) != 'px' {
     $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-base-line-height must resolve to a pixel unit.");
@@ -99,6 +93,28 @@ $rhythm-was-established: false;
     $error: rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-render-unit must be `px`, `em` or `rem`.");
   }
   @return true;
+}
+
+/// Validates that the font-size in a united pixel value, defering to rhythm-parse-value-filter if
+/// not a number.
+///
+/// @param {String} $font-size
+///
+/// @returns {Number}
+///   The original font-size if valid or the filtered font size.
+///
+/// @throws $rhythm-invalid-unit-error
+///
+@function validate-font-size($value) {
+  @if (type-of($value) == number) {
+    @if unit($value) != 'px' {
+      @return rhythm-throw-error($rhythm-invalid-unit-error, "$rhythm-base-font-size must resolve to a pixel unit byt was #{$value}");
+    } @else {
+      @return $value;
+    }
+  } @else {
+    @return rhythm-parse-value-filter($value);
+  }
 }
 
 /// Calculate a raw distance value based on number of lines and font-size
@@ -392,6 +408,8 @@ $rhythm-error-thrown: false;
 ///  Output the calculated `font-size` and `line-height`.
 ///
 @mixin rhythm($font-size, $lines: auto, $from-context: $rhythm-base-font-size) {
+
+  $font-size: validate-font-size($font-size);
   $font-size: rhythm-convert-value($font-size, px, $from-context);
 
   @if $lines == auto {
