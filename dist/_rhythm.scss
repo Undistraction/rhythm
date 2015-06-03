@@ -1,4 +1,4 @@
-/*! rhythm v0.1.10 – 10.11.2014 */
+/*! rhythm v0.2.0 – 03.06.2015 */
 
 ////
 /// @author Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).
@@ -125,11 +125,16 @@ $rhythm-was-established: false;
 /// @param {Number} $font-size ($rhythm-base-font-size)
 ///  The font size to fit into the lines
 ///
+/// @param {Number} $offset (0)
+///  Value to be removed from the total line-height (allowing you to adjust for borders).
+///
 /// @return {Number}
 ///  The raw distance value
 ///
-@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) {
+@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size, $offset:0) {
   $rhythm: rhythm-convert-value($lines * $rhythm-base-line-height, $rhythm-render-unit, $font-size);
+  // Adjust for offset
+  $rhythm: $rhythm - $offset;
   // Round pixel values
   @if unit($rhythm) == px {
     $rhythm: floor($rhythm);
@@ -287,11 +292,14 @@ $rhythm-was-established: false;
 /// @param {String} $font-size ($rhythm-base-font-size)
 ///  The font-size.
 ///
+/// @param {Number} $offset (0)
+///  Value to be removed from the total line-height (allowing you to adjust for borders).
+///
 /// @output
 ///  The line-height.
 ///
-@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) {
-  @include rhythm-render-property(line-height, rhythm-value-for-lines($lines, $font-size));
+@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size, $offset: 0) {
+  @include rhythm-render-property(line-height, rhythm-value-for-lines($lines, $font-size, $offset));
 }
 
 /// Render rhythm values.
@@ -401,13 +409,16 @@ $rhythm-error-thrown: false;
 /// @param {Number} $lines
 ///  The number of rhythm units (lines) each line of text should should fill.
 ///
+/// @param {Number} $offset (0)
+///  Value to be removed from the total line-height (allowing you to adjust for borders).
+///
 /// @param {Number} $from-context
 ///  The context of the block (when using ems)
 ///
 /// @output
 ///  Output the calculated `font-size` and `line-height`.
 ///
-@mixin rhythm($font-size, $lines: auto, $from-context: $rhythm-base-font-size) {
+@mixin rhythm($font-size, $lines: auto, $offset: 0, $from-context: $rhythm-base-font-size) {
 
   $font-size: validate-font-size($font-size);
   $font-size: rhythm-convert-value($font-size, px, $from-context);
@@ -416,7 +427,7 @@ $rhythm-error-thrown: false;
     $lines: rhythm-lines-for-font-size($font-size);
   }
   @include rhythm-render-property(font-size, rhythm-convert-value($font-size, $rhythm-render-unit, $from-context));
-  @include rhythm-render-leading($lines, $font-size);
+  @include rhythm-render-leading($lines, $font-size, $offset);
 }
 
 /// Use a different rhythm for a block by temporarily changing the configuration values
