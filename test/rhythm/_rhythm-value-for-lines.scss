@@ -27,4 +27,18 @@
       );
     }
   }
+
+  @include describe("with offset parameter") {
+
+    @include it("should return the lines multiplied by the base line-height, minus the offset") {
+      @include should(
+        expect(
+          rhythm-value-for-lines(5, 16px, .3125rem)
+        ),
+        to( equal(
+          6.25rem // (21px * 5) - 5px
+        ))
+      );
+    }
+  }
 }

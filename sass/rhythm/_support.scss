@@ -87,11 +87,16 @@ $rhythm-was-established: false;
 /// @param {Number} $font-size ($rhythm-base-font-size)
 ///  The font size to fit into the lines
 ///
+/// @param {Number} $offset (0)
+///  Value to be removed from the total line-height (allowing you to adjust for borders).
+///
 /// @return {Number}
 ///  The raw distance value
 ///
-@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size) {
+@function rhythm-value-for-lines($lines: 1, $font-size: $rhythm-base-font-size, $offset:0) {
   $rhythm: rhythm-convert-value($lines * $rhythm-base-line-height, $rhythm-render-unit, $font-size);
+  // Adjust for offset
+  $rhythm: $rhythm - $offset;
   // Round pixel values
   @if unit($rhythm) == px {
     $rhythm: floor($rhythm);
@@ -249,11 +254,14 @@ $rhythm-was-established: false;
 /// @param {String} $font-size ($rhythm-base-font-size)
 ///  The font-size.
 ///
+/// @param {Number} $offset (0)
+///  Value to be removed from the total line-height (allowing you to adjust for borders).
+///
 /// @output
 ///  The line-height.
 ///
-@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size) {
-  @include rhythm-render-property(line-height, rhythm-value-for-lines($lines, $font-size));
+@mixin rhythm-render-leading($lines, $font-size: $rhythm-base-font-size, $offset: 0) {
+  @include rhythm-render-property(line-height, rhythm-value-for-lines($lines, $font-size, $offset));
 }
 
 /// Render rhythm values.
