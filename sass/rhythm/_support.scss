@@ -155,7 +155,7 @@ $rhythm-was-established: false;
     $line-height: rhythm-convert-value($line-height, em);
   } @else {
     // ( Use given font-size )
-    $line-height: round(line-height);
+    $line-height: round($line-height);
   }
   @return ($font-size $line-height);
 }
