@@ -1,4 +1,4 @@
-/*! rhythm v0.3.0 – 03.06.2015 */
+/*! rhythm v0.3.1 – 16.06.2015 */
 
 ////
 /// @author Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).
@@ -193,7 +193,7 @@ $rhythm-was-established: false;
     $line-height: rhythm-convert-value($line-height, em);
   } @else {
     // ( Use given font-size )
-    $line-height: round(line-height);
+    $line-height: round($line-height);
   }
   @return ($font-size $line-height);
 }
