@@ -80,7 +80,7 @@ To set up the rhythm through your document use:
 @include rhythm-establish();
 ```
 
-This will render a selector targeting the `html` element which will set the desired `font-size` and `line-height`. You can pass `font-size` and `line-height` in to this mixin if you don't want
+This will render a selector targeting the `html` element which will set the desired `font-size` and `line-height`.
 
 Your most used mixin will be `rhythm` itself. Pass it in a font-size and it will output the `font-size` and a `line-height` set to the necessary number of lines to accommodate the `font-size`:
 
