@@ -1,4 +1,4 @@
-/*! rhythm v0.3.1 – 16.06.2015 */
+/*! rhythm v0.4.0 – 20.10.2015 */
 
 ////
 /// @author Pedr Browne (extracted from Compass Vertical Rhythm by Eric M. Suzanne).
@@ -113,7 +113,11 @@ $rhythm-was-established: false;
       @return $value;
     }
   } @else {
-    @return rhythm-parse-value-filter($value);
+    @if function-exists(rhythm-parse-value-filter) {
+      @return rhythm-parse-value-filter($value);
+    }@else{
+      @return rhythm-default-parse-value-filter($value);
+    }
   }
 }
 
@@ -359,14 +363,15 @@ $rhythm-error-thrown: false;
   @return null;
 }
 
-/// Overridable hook to handle unrecognised values. By default it will throw an error.
+/// Default handing of unknown values. If you want custom handling, define a
+/// functiton called `rhythm-parse-value-filter`
 ///
 /// @param {String} $value
 ///  An unrecognised value
 ///
 /// @throws $rhythm-unsupported-value-error
 ///
-@function rhythm-parse-value-filter($value) {
+@function rhythm-default-parse-value-filter($value) {
   @return rhythm-throw-error($rhythm-invalid-value-error, "Invalid value #{$value}");
 }
 
